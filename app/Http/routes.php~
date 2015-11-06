@@ -23,6 +23,4 @@ Route::controller("/puzzles", "PuzzlesController");
 
 Route::controller("/profile", "ProfileController");
 
-Route::controller("/scores", "ScoresController");
-
 Route::controller("/", "IndexController");
