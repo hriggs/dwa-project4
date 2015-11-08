@@ -2,8 +2,8 @@
 <html>
 <head>
     <title>
-        {{-- Yield the title if it exists, otherwise default to "Developer's Best Friend" --}}
-        @yield("title","Developer's Best Friend")
+        {{-- Yield the title if it exists, otherwise default to "Gamelit" --}}
+        @yield("title","Gamelit")
     </title>
 
     <meta charset="utf-8">
@@ -14,7 +14,6 @@
     @yield("head")
 </head>
 <body>
-
 	<!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
@@ -25,7 +24,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Logo here?</a>
+          <a class="navbar-brand" href="/"><img src="images/logo.png" alt="Gamelit logo."></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -42,7 +41,7 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Register/Log in</a></li>
+            <li><a href="#">Join/Log in</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -53,29 +52,21 @@
 			<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
 			<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 content">
 				<h1>Gamelit</h1>
-      		<h2>
-					@yield('subheading')
-				</h2>
-
-					{{-- Page description will be yielded here --}}
-					@yield('description')
-
     			<div>
         			{{-- Main page content will be yielded here --}}
         			@yield('content')
     			</div>
-
     		<footer>
     			Copyright &copy; {{ date('Y') }} Hannah Riggs <br>
     		</footer>
     		</div> <!-- end content -->
     		<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
-   	</div> <!-- end row of all content -->
+   		</div> <!-- end row of all content -->
 	</div> <!-- end container-fluid -->
     
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>	
-   @yield('body')
+   @yield("js")
     
 </body>
 </html>

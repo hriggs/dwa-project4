@@ -9,11 +9,50 @@ body {
 	background-repeat:repeat;
 }
 
+p {
+	font-size: 150%;
+}
+
 .content {
 	margin-top: 4em;
 }
 
 h1 {
 	color: #ffe7c9;
+	margin-bottom: 0.5em;
 }
 
+.btn-primary {
+	background-color: #31241b;
+	background-image: url(../images/button.png);
+	background-repeat:repeat;
+	border: 1px solid #31241b;
+	width: 100%;
+	text-align: center;
+	padding: 2em;
+	color: #fae0bb;
+}
+
+.btn-primary:hover {
+	background-color: #fae0bb;
+	background-image: url(../images/button-hover.png);
+	background-repeat:repeat;
+	border: 1px solid #fae0bb;
+	color: #31241b;
+}
+
+.home-content {
+	margin-top: 3em;
+}
+
+.or {
+	text-align: center;
+}
+
+.jigsaw {
+padding-left: 7em;
+}
+
+footer {
+	text-align: center;
+}
