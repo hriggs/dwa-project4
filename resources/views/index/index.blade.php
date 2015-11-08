@@ -5,14 +5,14 @@
 	Join and login if you want your progress to be tracked or play anonymously.</p>
 	<div class="container-fluid home-content">
 		<div class="row">
-			<div class="col-lg-6">
+			<div class="col-lg-6 col-md-6">
 				<a href="#" class="btn btn-primary home-button">Join/Login</a>
 				<div class="or">
-				<p>or</p>
+					<p>or</p>
 				</div>
 				<a href="#" class="btn btn-primary home-button">Play Now</a>
 			</div>
-			<div class="col-lg-6">
+			<div class="col-lg-6 col-md-6">
 				<img src="/images/jigsaw.png" alt="Jigsaw puzzle image." class="img-responsive jigsaw">
 			</div>
 		</div>
