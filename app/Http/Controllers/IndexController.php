@@ -16,7 +16,6 @@ class IndexController extends Controller {
     */
     public function getIndex() {
     	
-    	return "Homepage!";
-        //return view("index.index");
+        return view("index.index");
     }
 }
