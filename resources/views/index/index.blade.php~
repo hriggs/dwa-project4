@@ -3,7 +3,7 @@
 @section('content')
 	<p>Play games and solve puzzles! <br>
 	Join and login if you want your progress to be tracked or play anonymously.</p>
-	<div class="container-fluid home-content">
+	<div class="container-fluid main-content">
 		<div class="row">
 			<div class="col-lg-7 col-md-7">
 				<a href="#" class="btn btn-primary home-button">Join/Log in</a>

@@ -60,7 +60,20 @@ footer {
 	margin: 3em 0 1em 0;
 }
 
-/* Join/Login */
+/* Navigation bar */
+.navbar-default {
+	background-color: #fffaf3;
+}
+
+ul.nav.navbar-nav li a {
+	color: #31241b;
+}
+
+ul.nav.navbar-nav li a:hover {
+	color: #da4d2f;
+}
+
+/* Join/Log in */
 .join {
 	background-color: #31241b;
 	background-image: url(../images/button.png);
