@@ -2,12 +2,13 @@
 <html>
 <head>
     <title>
-        {{-- Yield the title if it exists, otherwise default to "Gamelit" --}}
-        @yield("title","Gamelit")
+        {{-- Yield the title if it exists, otherwise default to "GameLit" --}}
+        @yield("title","GameLit")
     </title>
 
     <meta charset="utf-8">
     <link href="/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Pompiere' rel='stylesheet' type='text/css'>
     <link href="/css/styles.css" type="text/css" rel="stylesheet">
 
     {{-- Yield any page specific CSS files or anything else you might want in the <head> --}}
@@ -51,7 +52,7 @@
 		<div class="row">
 			<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
 			<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 content">
-				<h1>Gamelit</h1>
+				<h1>GameLit</h1>
     			<div>
         			{{-- Main page content will be yielded here --}}
         			@yield('content')

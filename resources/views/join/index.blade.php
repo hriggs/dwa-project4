@@ -1,14 +1,12 @@
 @extends('layouts.master')
 
 @section('title')
-	Join Gamelit
+	Join GameLit
 @stop
 
 @section('content')
-	<div class="container-fluid main-content">
-		<div class="row">
-			<div class="col-lg-2 col-md-2 col-sm-2"></div>
-			<div class="col-lg-5 col-md-5 col-sm-5">
+	<div class="center">
+			<div class="left">
 				<h2>Log in</h2>
 				<p>*Required</p>
 				<form method="POST" action="/unknown-yet" class="join">
@@ -20,8 +18,8 @@
 					<input type="submit" class="btn submit" value="Log In">
 				</form>
 			</div>
-			<div class="col-lg-5 col-md-5 col-sm-5">
-				<h2>Join Gamelit</h2>
+			<div class="right">
+				<h2>Join GameLit</h2>
 				<p>*Required</p>
 				<form method="POST" action="/unknown-yet" class="join">
 					<input type='hidden' name='_token' value='{{ csrf_token() }}'>
@@ -97,6 +95,6 @@
 					<input type="submit" class="btn submit" value="Join">
 				</form>
 			</div>
-		</div>
+			<div class="clearfix"></div>
 	</div>
 @stop

@@ -7,6 +7,7 @@ body {
 	background-color: #da4d2f;
 	background-image: url(../images/tile.png);
 	background-repeat:repeat;
+	font-family: sans-serif;
 }
 
 p {
@@ -19,7 +20,10 @@ p {
 
 h1 {
 	color: #ffe7c9;
-	margin-bottom: 0.75em;
+	margin-bottom: 0.25em;
+	font-family: 'Pompiere', cursive;
+	font-size: 600%;
+	text-align: center;
 }
 
 .btn-primary {
@@ -32,6 +36,7 @@ h1 {
 	padding: 1.5em;
 	color: #fae0bb;
 	font-size: 150%;
+	font-weight: bold;
 }
 
 .btn-primary:hover {
@@ -49,6 +54,7 @@ h1 {
 .or {
 	text-align: center;
 	color: #fae0bb;
+	margin: 1em 0 1em 0;
 }
 
 .jigsaw {
@@ -74,13 +80,28 @@ ul.nav.navbar-nav li a:hover {
 }
 
 /* Join/Log in */
+
+.center {
+	margin: 0 10% 0 10%;
+	/*background-color: red;*/
+}
+
+.left, .right {
+	float: left;
+	margin: 0 5% 0 5%;
+}
+
+.clearfix {
+	clear: both;
+}
+
 .join {
 	background-color: #31241b;
 	background-image: url(../images/button.png);
 	background-repeat:repeat;
 	padding: 40px;
 	color: #fae0bb;
-	width: 300px;
+	/*width: 350px;*/
 	font-size: 120%;
 }
 
