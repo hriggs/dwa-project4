@@ -75,8 +75,18 @@ ul.nav.navbar-nav li a {
 	color: #31241b;
 }
 
-ul.nav.navbar-nav li a:hover {
+ul.nav.navbar-nav.navbar-right li a {
+	color: white;
+}
+
+ul.nav.navbar-nav li a:hover, ul.nav.navbar-nav.navbar-right li a:hover {
 	color: #da4d2f;
+}
+
+.navbar-right {
+	background-color: #31241b;
+	background-image: url(../images/button.png);
+	background-repeat:repeat;
 }
 
 /* Join/Log in */

@@ -21,4 +21,6 @@ Route::controller("/stats", "StatsController");
 
 Route::controller("/high-scores", "HighScoresController");
 
+Route::controller("/log-out", "LogOutController");
+
 Route::controller("/", "IndexController");
