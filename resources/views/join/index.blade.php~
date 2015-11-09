@@ -1,12 +1,16 @@
 @extends('layouts.master')
 
+@section('title')
+	Join or Log in
+@stop
+
 @section('content')
 	<div class="container-fluid main-content">
 		<div class="row">
-			<div class="col-lg-2 col-md-1 col-sm-1"></div>
+			<div class="col-lg-2 col-md-2 col-sm-2"></div>
 			<div class="col-lg-5 col-md-5 col-sm-5">
-			<h2>Log in</h2>
-			<p>*Required</p>
+				<h2>Log in</h2>
+				<p>*Required</p>
 				<form method="POST" action="/unknown-yet" class="join">
 					<input type='hidden' name='_token' value='{{ csrf_token() }}'>
 					<label>Username:*</label><br>
@@ -17,7 +21,8 @@
 				</form>
 			</div>
 			<div class="col-lg-5 col-md-5 col-sm-5">
-			<h2>Join Gamelit</h2>
+				<h2>Join Gamelit</h2>
+				<p>*Required</p>
 				<form method="POST" action="/unknown-yet" class="join">
 					<input type='hidden' name='_token' value='{{ csrf_token() }}'>
 					<input type='hidden' name='_token' value='{{ csrf_token() }}'>

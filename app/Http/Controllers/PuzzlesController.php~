@@ -16,7 +16,8 @@ class PuzzlesController extends Controller {
     */
     public function getIndex() {
     	
-        return view("puzzles.index");
+    	return "Puzzles controller -- by GET!";
+        //return view("index.index");
     }
     
    /**

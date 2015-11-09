@@ -1,9 +1,13 @@
 @extends('layouts.master')
 
+@section('title')
+	Join Gamelit
+@stop
+
 @section('content')
 	<div class="container-fluid main-content">
 		<div class="row">
-			<div class="col-lg-2 col-md-1 col-sm-1"></div>
+			<div class="col-lg-2 col-md-2 col-sm-2"></div>
 			<div class="col-lg-5 col-md-5 col-sm-5">
 				<h2>Log in</h2>
 				<p>*Required</p>

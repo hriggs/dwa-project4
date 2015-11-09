@@ -65,15 +65,15 @@ footer {
 	background-color: #31241b;
 	background-image: url(../images/button.png);
 	background-repeat:repeat;
-	padding: 20px;
+	padding: 40px;
 	color: #fae0bb;
-	width: 250px;
+	width: 380px;
 	font-size: 120%;
 }
 
 .form-box, textarea, select {
 	margin-bottom: 1.5em;
-	background-color: yellow;
+	background-color: #fae0bb;
 }
 
 select {
