@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 
-class LoginController extends Controller {
+class StatsController extends Controller {
 	
    /**
 	* Construct function
@@ -16,8 +16,7 @@ class LoginController extends Controller {
     */
     public function getIndex() {
     	
-    	return "Login controller -- by GET!";
-        //return view("index.index");
+        return view("stats.index");
     }
     
    /**
@@ -25,7 +24,7 @@ class LoginController extends Controller {
     */
     public function postIndex() {
     	
-    	return "Login controller -- by POST!";
+    	return "Profile controller -- by POST!";
         //return view("index.index");
     }
 }

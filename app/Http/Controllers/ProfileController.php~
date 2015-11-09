@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 
-class ScoresController extends Controller {
+class ProfileController extends Controller {
 	
    /**
 	* Construct function
@@ -16,7 +16,7 @@ class ScoresController extends Controller {
     */
     public function getIndex() {
     	
-    	return "Scores controller -- by GET!";
+    	return "Profile controller -- by GET!";
         //return view("index.index");
     }
     
@@ -25,7 +25,7 @@ class ScoresController extends Controller {
     */
     public function postIndex() {
     	
-    	return "Scores controller -- by POST!";
+    	return "Profile controller -- by POST!";
         //return view("index.index");
     }
 }

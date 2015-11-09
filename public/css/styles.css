@@ -87,5 +87,11 @@ select {
 	color: #31241b;
 }
 
-
+.submit:hover {
+	background-color: #31241b;
+	background-image: url(../images/button.png);
+	background-repeat:repeat;
+	color: #fae0bb;
+	border: 2px solid #fae0bb;
+}
 

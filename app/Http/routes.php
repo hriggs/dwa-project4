@@ -11,18 +11,14 @@
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-
 Route::controller("/join", "JoinController");
-
-Route::controller("/login", "LoginController");
 
 Route::controller("/puzzles", "PuzzlesController");
 
 Route::controller("/profile", "ProfileController");
 
-Route::controller("/scores", "ScoresController");
+Route::controller("/stats", "StatsController");
+
+Route::controller("/high-scores", "HighScoresController");
 
 Route::controller("/", "IndexController");

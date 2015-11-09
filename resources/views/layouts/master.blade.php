@@ -30,13 +30,13 @@
           <ul class="nav navbar-nav">
             <li><a href="/">Home</a></li>
             <li><a href="/puzzles">Puzzles</a></li>
-            <li><a href="#">High Scores</a></li>
+            <li><a href="/high-scores">High Scores</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#">My Profile</a></li>
-                <li><a href="#">My Stats</a></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="/profile">My Profile</a></li>
+                <li><a href="/stats">My Stats</a></li>
+                <li><a href="/logout">Logout</a></li>
               </ul>
             </li>
           </ul>
