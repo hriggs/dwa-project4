@@ -16,8 +16,8 @@ class JoinController extends Controller {
     */
     public function getIndex() {
     	
-    	return "Join controller -- by GET!";
-        //return view("index.index");
+    	//return "Join controller -- by GET!";
+        return view("join.index");
     }
     
    /**
@@ -28,5 +28,4 @@ class JoinController extends Controller {
     	return "Join controller -- by POST!";
         //return view("index.index");
     }
-}
 }

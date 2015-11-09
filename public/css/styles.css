@@ -20,7 +20,6 @@ p {
 h1 {
 	color: #ffe7c9;
 	margin-bottom: 0.75em;
-	
 }
 
 .btn-primary {
@@ -43,7 +42,7 @@ h1 {
 	color: #31241b;
 }
 
-.home-content {
+.main-content {
 	margin-top: 3em;
 }
 
@@ -58,4 +57,35 @@ h1 {
 
 footer {
 	text-align: center;
+	margin: 3em 0 1em 0;
 }
+
+/* Join/Login */
+.join {
+	background-color: #31241b;
+	background-image: url(../images/button.png);
+	background-repeat:repeat;
+	padding: 20px;
+	color: #fae0bb;
+	width: 250px;
+	font-size: 120%;
+}
+
+.form-box, textarea, select {
+	margin-bottom: 1.5em;
+	background-color: #fae0bb;
+}
+
+select {
+	color: #31241b;
+}
+
+.submit {
+	background-color: #fae0bb;
+	background-image: url(../images/button-hover.png);
+	background-repeat:repeat;
+	color: #31241b;
+}
+
+
+

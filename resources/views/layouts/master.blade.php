@@ -41,7 +41,7 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Join/Log in</a></li>
+            <li><a href="/join">Join/Log in</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
