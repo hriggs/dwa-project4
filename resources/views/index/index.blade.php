@@ -6,11 +6,11 @@
 	<div class="container-fluid main-content">
 		<div class="row">
 			<div class="col-lg-7 col-md-7">
-				<a href="/join" class="btn btn-primary home-button">Join/Log in</a>
+				<a href="/puzzles" class="btn btn-primary home-button">Play Now</a>
 				<div class="or">
 					<p>or</p>
 				</div>
-				<a href="/puzzles" class="btn btn-primary home-button">Play Now</a>
+				<a href="/join" class="btn btn-primary home-button">Join/Log in</a>
 			</div>
 			<div class="col-lg-5 col-md-5">
 				<img src="/images/jigsaw.png" alt="Jigsaw puzzle image." class="img-responsive jigsaw">
