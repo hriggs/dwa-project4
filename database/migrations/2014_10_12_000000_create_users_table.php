@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('city');
             $table->string('state');
             $table->string('country');
-            $table->string('bio');
+            $table->text('bio');
             $table->rememberToken();
         });
     }

@@ -15,11 +15,13 @@ class CreatePuzzlesTable extends Migration
     	Schema::create('puzzles', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('name');
+            $table->string('title');
             $table->string('creator');
-            $table->string('creation_date');
-            $table->string('description');
-            $table->string('directions');
+            $table->integer('creation_date');
+            $table->text('description');
+            $table->text('directions');
+            $table->string('image_path');
+            $table->boolean('created');
         });
     }
 
