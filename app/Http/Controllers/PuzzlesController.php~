@@ -12,12 +12,11 @@ class PuzzlesController extends Controller {
     }
     
    /**
-    * Responds to requests to GET /
+    * Responds to requests to GET /puzzles
     */
     public function getIndex() {
     	
-    	return "Puzzles controller -- by GET!";
-        //return view("index.index");
+        return view("puzzles.index");
     }
     
    /**

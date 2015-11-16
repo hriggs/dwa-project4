@@ -12,7 +12,7 @@ class HighScoresController extends Controller {
     }
     
    /**
-    * Responds to requests to GET /
+    * Responds to requests to GET /high-scores
     */
     public function getIndex() {
     	
@@ -20,7 +20,7 @@ class HighScoresController extends Controller {
     }
     
    /**
-    * Responds to requests to POST /
+    * Responds to requests to POST /high-scores
     */
     public function postIndex() {
     	

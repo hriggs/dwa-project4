@@ -12,7 +12,7 @@ class StatsController extends Controller {
     }
     
    /**
-    * Responds to requests to GET /
+    * Responds to requests to GET /stats
     */
     public function getIndex() {
     	
@@ -20,7 +20,7 @@ class StatsController extends Controller {
     }
     
    /**
-    * Responds to requests to POST /
+    * Responds to requests to POST /stats
     */
     public function postIndex() {
     	

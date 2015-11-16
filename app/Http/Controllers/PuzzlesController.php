@@ -12,7 +12,7 @@ class PuzzlesController extends Controller {
     }
     
    /**
-    * Responds to requests to GET /
+    * Responds to requests to GET /puzzles
     */
     public function getIndex() {
     	
@@ -20,7 +20,8 @@ class PuzzlesController extends Controller {
     }
     
    /**
-    * Responds to requests to POST /
+    * Responds to requests to POST /puzzles
+    * NEEDED??
     */
     public function postIndex() {
     	

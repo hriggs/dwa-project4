@@ -15,6 +15,12 @@
     @yield("head")
 </head>
 <body>
+    @if(\Session::has('flash_message'))
+        <div class='flash_message'>
+            {{ \Session::get('flash_message') }}
+        </div>
+    @endif
+    
 	<!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">

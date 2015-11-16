@@ -89,11 +89,21 @@ ul.nav.navbar-nav li a:hover, ul.nav.navbar-nav.navbar-right li a:hover {
 	background-repeat:repeat;
 }
 
+/* Flash message */
+.flash_message {
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+    margin-top: 50px;
+    background-color: #f1e742;
+    font-weight: bold;
+    z-index: 100;
+} 
+
 /* Join/Log in */
 
 .center {
 	margin: 0 10% 0 10%;
-	/*background-color: red;*/
 }
 
 .left, .right {
@@ -141,7 +151,7 @@ select, input {
 }
 
 .error {
-	color: #e16a49;
+	color: #f1e742;
 	font-size: 60%;
 }
 

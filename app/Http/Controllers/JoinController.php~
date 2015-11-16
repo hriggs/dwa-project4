@@ -25,7 +25,7 @@ class JoinController extends Controller {
     */
     public function postIndex(Request $request) {
     	
-    	var_dump($request);
+    	//var_dump($request);
     	
     	// log in form
     	if ($request->input("log_in")) {
@@ -67,7 +67,12 @@ class JoinController extends Controller {
     							 "country" => "alpha",
     							]
     						);
-   			
+    		
+    		// make sure username does not already exist
+    		
+    		// add row to database
+    		
+    		// log user in
    			
     		return "Join YAY controller -- by POST!";
     	}
