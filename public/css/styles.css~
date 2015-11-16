@@ -87,7 +87,6 @@ ul.nav.navbar-nav li a:hover, ul.nav.navbar-nav.navbar-right li a:hover {
 	background-color: #31241b;
 	background-image: url(../images/button.png);
 	background-repeat:repeat;
-	border: 1px solid #31241b;
 }
 
 /* Join/Log in */
@@ -119,9 +118,10 @@ ul.nav.navbar-nav li a:hover, ul.nav.navbar-nav.navbar-right li a:hover {
 .form-box, textarea, select {
 	margin-bottom: 1.5em;
 	background-color: #fae0bb;
+	color: #31241b; 
 }
 
-select {
+select, input {
 	color: #31241b;
 }
 
@@ -138,5 +138,10 @@ select {
 	background-repeat:repeat;
 	color: #fae0bb;
 	border: 2px solid #fae0bb;
+}
+
+.error {
+	color: red;
+	font-size: 70%;
 }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class JoinController extends Controller {
 	
@@ -12,20 +13,63 @@ class JoinController extends Controller {
     }
     
    /**
-    * Responds to requests to GET /
+    * Responds to requests to GET /join
     */
     public function getIndex() {
-    	
-    	//return "Join controller -- by GET!";
+
         return view("join.index");
     }
     
    /**
-    * Responds to requests to POST /
+    * Responds to requests to POST /join
     */
-    public function postIndex() {
+    public function postIndex(Request $request) {
     	
-    	return "Join controller -- by POST!";
-        //return view("index.index");
+    	// log in form
+    	if ($request->input("log_in")) {
+    		
+    		// custom error messages
+    		$messages = [
+    			'required' => 'Field is required',
+    			'numeric' => 'Field must only contain a number',
+    			'min' => 'Field input must be between 1 and 9',
+    			'max' => 'Field input must be between 1 and 9'
+			];
+    		
+    		// validate the request data
+    		$this->validate($request, 
+    							["username" => "required|alpha_num|min:1|max:10",
+    							 "password" => "required|min:5|max:20",
+    							]
+    						);
+    						
+			// check if information in database
+			
+			// log user in
+			
+			return redirect('/profile');    		
+    	}
+    	
+    	// join form
+   		if ($request->input("join")) {
+   			
+   			// custom error messages
+    		$messages = [
+    			'required' => 'Field is required',
+    			'numeric' => 'Field must only contain a number',
+    			'min' => 'Field input must be between 1 and 9',
+    			'max' => 'Field input must be between 1 and 9'
+			];
+    		
+    		// validate the request data
+    		$this->validate($request, 
+    							["username" => "required|alpha_num|min:1|max:10",
+    							 "password" => "required|min:5|max:20",
+    							]
+    						);
+   			
+   			
+    		return "Join YAY controller -- by POST!";
+    	}
     }
 }
