@@ -25,6 +25,8 @@ class JoinController extends Controller {
     */
     public function postIndex(Request $request) {
     	
+    	//var_dump($request);
+    	
     	// log in form
     	if ($request->input("log_in")) {
     		
@@ -37,9 +39,11 @@ class JoinController extends Controller {
     						
 			// check if information in database
 			
-			// log user in
+			// log user in if user exists
 			
-			return redirect('/profile');    		
+			return redirect('/profile'); 
+			
+			// otherwise, ask for information again   		
     	}
     	
     	// join form
@@ -55,8 +59,12 @@ class JoinController extends Controller {
     		
     		// validate the request data
     		$this->validate($request, 
-    							["username" => "required|alpha_num|min:1|max:10",
-    							 "password" => "required|min:5|max:20",
+    							["username-join" => "required|alpha_num|min:1|max:10",
+    							 "password-join" => "required|min:5|max:20",
+    							 "name" => "required|alpha",
+    							 "email" => "required|email",
+    							 "city" => "alpha",
+    							 "country" => "alpha",
     							]
     						);
    			

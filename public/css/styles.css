@@ -141,7 +141,7 @@ select, input {
 }
 
 .error {
-	color: red;
+	color: #f1e742;
 	font-size: 60%;
 }
 
