@@ -13,36 +13,48 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
     	// credentials for instructor/TA login
-    	DB::table('users')->insert([
-        	'created_at' => Carbon\Carbon::now()->toDateTimeString(),
-        	'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-        	'username' => 'Jill@harvard.edu',
-        	'password' => 'helloworld',
-        	'name' => "Jill",
-        	'email' => 'Jill@harvard.edu',
-        	'city' => 'Cambridge',
-        	'state' => 'Massachusetts',
-        	'country' => 'USA',
-        	'bio' => 'My name is Jill and I am a student at the Harvard Extension!',
-    	]);
+	   	$user = \App\User::firstOrCreate(['email' => 'jill@harvard.edu']);
+	   	$user->username = 'jill123';
+	    $user->name = 'Jill';
+	    $user->email = 'jill@harvard.edu';
+	    $user->password = \Hash::make('helloworld');
+	 	$user->city = 'Cambridge';
+	 	$user->state = 'Massachusetts';
+	 	$user->country = 'USA';
+	 	$user->bio = 'My name is Jill and I am a student at the Harvard Extension!';
+	    $user->save();
+	
+	    $user = \App\User::firstOrCreate(['email' => 'jamal@harvard.edu']);
+	    $user->username = 'jamal123';
+	    $user->name = 'Jamal';
+	    $user->email = 'jamal@harvard.edu';
+	    $user->password = \Hash::make('helloworld');
+	    $user->city = 'Cambridge';
+	 	$user->state = 'Massachusetts';
+	 	$user->country = 'USA';
+	 	$user->bio = 'My name is Jamal and I am a student at the Harvard Extension!';
+	    $user->save();
     	
     	// use the factory to create a Faker\Generator instance
 		$faker = Faker::create();
 		
 		// generate random user data
 		for($i = 0; $i < 100; $i++) {
-			DB::table('users')->insert([
-        		'created_at' => $faker->dateTimeThisDecade($max = 'now'),
-        		'updated_at' => $faker->dateTimeThisDecade($max = 'now'),
-        		'username' => $faker->userName,
-        		'password' => $faker->password,
-        		'name' => $faker->name,
-        		'email' => $faker->email,
-        		'city' => $faker->city,
-        		'state' => $faker->state,
-        		'country' => $faker->country,
-        		'bio' => $faker->text,
-    	]);
+			
+			$email = $faker->email;
+			
+			$user = \App\User::firstOrCreate(['email' => $email]);
+			$user->created_at = $faker->dateTimeThisDecade($max = 'now');
+			$user->updated_at = $faker->dateTimeThisDecade($max = 'now');
+	   		$user->username = $faker->userName;
+	    	$user->name = $faker->name;
+	    	$user->email = $email;
+	    	$user->password = \Hash::make($faker->password);
+	 		$user->city = $faker->city;
+	 		$user->state = $faker->state;
+	 		$user->country = $faker->country;
+	 		$user->bio = $faker->text;
+	    	$user->save();			
     	}
     }
 }
