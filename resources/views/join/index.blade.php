@@ -9,7 +9,7 @@
 			<div class="left">
 				<h2>Log in</h2>
 				<p>*Required</p>
-				<form method="POST" action="/join" class="join">
+				<form method="POST" action="/login" class="join">
 					<input type='hidden' name='_token' value='{{ csrf_token() }}'>
 					<fieldset> 
 						<label>Username:*</label><br>
@@ -39,7 +39,7 @@
 			<div class="right">
 				<h2>Join GameLit</h2>
 				<p>*Required</p>
-				<form method="POST" action="/join" class="join">
+				<form method="POST" action="/register" class="join">
 					<input type='hidden' name='_token' value='{{ csrf_token() }}'>
 					<fieldset>
 						<label>Username:*</label><br>
