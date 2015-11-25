@@ -16,7 +16,13 @@ class PuzzlesController extends Controller {
     */
     public function getIndex() {
     	
-        return view("puzzles.index");
+    	// get created puzzles
+    	$created_puzzles = \App\Puzzle::orderBy("id", "ASC")->where("created", 1)->get();
+    	
+    	// get puzzles not created
+    	$not_created_puzzles = \App\Puzzle::orderBy("id", "ASC")->where("created", 0)->get();
+    	
+        return view("puzzles.index")->with(["created_puzzles"=>$created_puzzles, "not_created_puzzles"=>$not_created_puzzles]);
     }
     
    /**

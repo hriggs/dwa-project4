@@ -47,6 +47,26 @@ h1 {
 	color: #31241b;
 }
 
+.btn-puzzle {
+	background-color: #31241b;
+	background-image: url(../images/button.png);
+	background-repeat:repeat;
+	border: 1px solid #31241b;
+	text-align: center;
+	padding: 1em;
+	color: #fae0bb;
+	font-size: 100%;
+	font-weight: bold;
+}
+
+.btn-puzzle:hover {
+	background-color: #fae0bb;
+	background-image: url(../images/button-hover.png);
+	background-repeat:repeat;
+	border: 1px solid #fae0bb;
+	color: #31241b;
+}
+
 .main-content {
 	margin-top: 3em;
 }
@@ -134,7 +154,6 @@ ul.nav.navbar-nav.navbar-right .logged-in li {
 	background-repeat:repeat;
 	padding: 40px;
 	color: #fae0bb;
-	/*width: 350px;*/
 	font-size: 120%;
 }
 
@@ -168,3 +187,12 @@ select, input {
 	font-size: 60%;
 }
 
+/* Puzzles List */
+.puzzles {
+	width: 60%;
+	margin: 0 20% 0 20%;
+}
+
+.puzzle {
+	margin-bottom: 5em;
+	}

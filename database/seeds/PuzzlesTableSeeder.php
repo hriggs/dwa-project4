@@ -34,5 +34,29 @@ class PuzzlesTableSeeder extends Seeder
         	'image_path' => 'image path here!',
         	'created' => false,
     	]);
+    	
+    	DB::table('puzzles')->insert([
+        	'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+        	'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+        	'title' => 'Not Created',
+        	'creator' => 'Édouard Lucas',
+        	'creation_date' => 1883,
+        	'description' => 'description here!',
+        	'directions' => 'Directions here!',
+        	'image_path' => 'image path here!',
+        	'created' => false,
+    	]);
+    	
+    	DB::table('puzzles')->insert([
+        	'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+        	'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+        	'title' => 'Created',
+        	'creator' => 'Édouard Lucas',
+        	'creation_date' => 1883,
+        	'description' => 'description here!',
+        	'directions' => 'Directions here!',
+        	'image_path' => 'image path here!',
+        	'created' => true,
+    	]);
     }
 }
