@@ -16,14 +16,12 @@ class ProfileController extends Controller {
    /**
     * Responds to requests to GET /profile
     */
-    public function getIndex() {
+    public function getIndex(Request $request) {
     	
     	// get the current user 
     	$user = Auth::user();
     	
-    	//dump($user);
-    	
-        return view("profile.index")->with('user', $user);
+        return view("profile.index")->with(['user'=>$user,'states'=>$this->getStates()]);
     }
     
    /**
@@ -36,6 +34,10 @@ class ProfileController extends Controller {
     	
     	// get current user
     	$user = Auth::user();
+    	
+    	echo "db: " . $user->state;
+    	
+    	echo $request->state;
     	
     	// update fields
     	$user->username = $request->username;
@@ -53,7 +55,14 @@ class ProfileController extends Controller {
     	
     	// save in database
     	$user->save();
-
-    	return view("profile.index")->with('user', $user);
+    	
+        return view("profile.index")->with(['user'=>$user,'states'=>$this->getStates()]);
+    }
+    
+   /**
+    *
+    */
+    public function getStates() {
+    	return file(storage_path() . "/app/text/states.txt", FILE_SKIP_EMPTY_LINES | FILE_IGNORE_NEW_LINES);
     }
 }

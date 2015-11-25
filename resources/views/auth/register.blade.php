@@ -1,8 +1,10 @@
 @extends('layouts.master')
 
 @section('content')
-
-    <p>Already have an account? <a href='/login'>Login here...</a></p>
+	
+	<div class="page-link">
+    	<p>Already have an account? <a href='/login'>Login here...</a></p>
+    </div>
 
     <h2>Register</h2>
     <p>*Required</p>

@@ -58,7 +58,7 @@
       </div>
     </nav>	
 
-	<div class="container-fluid"> 
+	<div class="container-fluid wrapper"> 
 		<div class="row">
 			<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
 			<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 content">
@@ -67,17 +67,16 @@
         			{{-- Main page content will be yielded here --}}
         			@yield('content')
     			</div>
-    		<footer>
-    			Copyright &copy; {{ date('Y') }} Hannah Riggs <br>
-    		</footer>
     		</div> <!-- end content -->
     		<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
    		</div> <!-- end row of all content -->
+   		<div class="push"></div>
 	</div> <!-- end container-fluid -->
-    
+	<footer>
+    	Copyright &copy; {{ date('Y') }} Hannah Riggs <br>
+   	</footer>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>	
    @yield("js")
-    
 </body>
 </html>

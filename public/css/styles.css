@@ -10,8 +10,29 @@ body {
 	font-family: sans-serif;
 }
 
+html, body {
+	height: 100%;
+}
+
+.wrapper {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -4em;
+}
+
 p {
 	font-size: 150%;
+}
+
+.page-link a {
+	color: #FAE0BB;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.page-link a:hover {
+	color: #32251C;
 }
 
 .content {
@@ -84,6 +105,10 @@ h1 {
 footer {
 	text-align: center;
 	margin: 3em 0 1em 0;
+}
+
+.footer, .push {
+	height: 4em;
 }
 
 /* Navigation bar */

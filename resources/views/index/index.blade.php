@@ -10,7 +10,7 @@
 				<div class="or">
 					<p>or</p>
 				</div>
-				<a href="/login" class="btn btn-primary home-button">Login</a>
+				<a href="/login" class="btn btn-primary home-button">Log in</a>
 				<div class="or">
 					<p>or</p>
 				</div>

@@ -8,7 +8,7 @@
 <div class="puzzles">
 	<h2>Play Now!</h2>
 	@foreach($created_puzzles as $puzzle)
-        <div>
+        <div class="puzzle">
             <h3>{{ $puzzle->title }}</h3>
 			<img src="{{ $puzzle->img_path }}" alt="Puzzle image. ">
 			<p>{{ $puzzle->description }}</p>

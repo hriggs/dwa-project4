@@ -69,6 +69,11 @@ class AuthController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'username' => $data['username'],
+            'city' => $data['city'],
+            'state' => $data['state'],
+            'country' => $data['country'],
+            'bio' => $data['bio'],
         ]);
     }
     
@@ -83,4 +88,15 @@ class AuthController extends Controller
     	\Session::flash('flash_message','You have been logged out.');
     	return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
 	}
+	
+	/*public function getRegister() {
+	
+	}*/
+	
+   /**
+    *
+    */
+    public function getStates() {
+    	return file(storage_path() . "/app/text/states.txt", FILE_SKIP_EMPTY_LINES | FILE_IGNORE_NEW_LINES);
+    }
 }
