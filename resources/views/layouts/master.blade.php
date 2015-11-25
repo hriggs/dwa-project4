@@ -42,7 +42,7 @@
           <ul class="nav navbar-nav navbar-right">
           	@if(Auth::check())
            		<li class="dropdown">
-              		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User <span class="caret"></span></a>
+              		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User {{ $user->username }} <span class="caret"></span></a>
               		<ul class="dropdown-menu logged-in">
                 		<li><a href="/profile">My Profile</a></li>
                 		<li><a href="/stats">My Stats</a></li>
@@ -50,10 +50,8 @@
               		</ul>
             	</li>
         	@else
-
         	  	<li><a href="/login">Log in</a></li>
         	  	<li><a href="/register">Join</a></li>
-
         	@endif
           </ul>
         </div><!--/.nav-collapse -->

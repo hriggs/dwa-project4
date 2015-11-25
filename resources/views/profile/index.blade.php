@@ -5,8 +5,8 @@
 @stop
 
 @section('content')
-	<h2>Welcome user!</h2>
-	<p>*Cannot be left blank</p>
+	<h2>Welcome {{ $user->name }}!</h2>
+	<p>*Fields with stars cannot be left blank.</p>
 	<p>Leave password fields blank if you wish to keep your previous password.<br>Password not shown for security reasons.</p>
 	<form method="POST" action="/profile" class="join">
 		{!! csrf_field() !!}
@@ -23,7 +23,7 @@
 		@endif
 		<fieldset>
 			<label>Password:</label><br>
-			<input type="password" name="password" class="form-box" required>
+			<input type="password" name="password" class="form-box">
 		</fieldset>
 		@if($errors->get('password'))
 			<ul>
@@ -34,7 +34,7 @@
 		@endif
 		<fieldset>
 			<label>Confirm Password:</label><br>
-			<input type="password" name="password_confirmation" class="form-box" required>
+			<input type="password" name="password_confirmation" class="form-box">
 		</fieldset>
 		@if($errors->get('password'))
 			<ul>
@@ -78,7 +78,7 @@
 		@endif
 		<fieldset>
 			<label>State:</label><br>
-			<select>
+			<select name="state">
 				<option value="AL">Alabama</option>
 				<option value="AK">Alaska</option>
 				<option value="AZ">Arizona</option>
