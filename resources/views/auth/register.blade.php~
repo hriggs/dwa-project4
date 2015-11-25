@@ -23,7 +23,7 @@
 					@endif
 					<fieldset>
 						<label>Password:*</label><br>
-						<input type="password" name="password" class="form-box" required>
+						<input type="password" name="password" class="form-box" value='{{ old('password') }}' required>
 					</fieldset>
 					@if($errors->get('password'))
     					<ul>
@@ -34,7 +34,7 @@
 					@endif
 					<fieldset>
 						<label>Confirm Password:*</label><br>
-						<input type="password" name="password_confirmation" class="form-box" required>
+						<input type="password" name="password_confirmation" class="form-box" value='{{ old('password') }}' required>
 					</fieldset>
 					@if($errors->get('password'))
     					<ul>
