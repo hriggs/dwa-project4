@@ -76,12 +76,26 @@ ul.nav.navbar-nav li a {
 }
 
 ul.nav.navbar-nav.navbar-right li a {
-	color: white;
+	color: #FFFAF3;
+	background-color: #31241B;
+}
+
+.dropdown-menu {
+	background-color: #31241B;
 }
 
 ul.nav.navbar-nav li a:hover, ul.nav.navbar-nav.navbar-right li a:hover {
 	color: #da4d2f;
 }
+
+ul.nav.navbar-nav.navbar-right li {
+	border-right: 5px solid #FFFAF3;
+}
+
+ul.nav.navbar-nav.navbar-right .logged-in li {
+	border-right: 5px solid red;
+}
+
 
 .navbar-right {
 	background-color: #31241b;
@@ -97,7 +111,6 @@ ul.nav.navbar-nav li a:hover, ul.nav.navbar-nav.navbar-right li a:hover {
     margin-top: 50px;
     background-color: #f1e742;
     font-weight: bold;
-    z-index: 100;
 } 
 
 /* Join/Log in */

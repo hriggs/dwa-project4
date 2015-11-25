@@ -38,14 +38,6 @@
             <li><a href="/">Home</a></li>
             <li><a href="/puzzles">Puzzles</a></li>
             <li><a href="/high-scores">High Scores</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="/profile">My Profile</a></li>
-                <li><a href="/stats">My Stats</a></li>
-                <li><a href="/log-out">Logout</a></li>
-              </ul>
-            </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
           	@if(Auth::check())
@@ -58,27 +50,15 @@
               		</ul>
             	</li>
         	@else
+
         	  	<li><a href="/login">Log in</a></li>
         	  	<li><a href="/register">Join</a></li>
+
         	@endif
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>	
-    
-    <nav>
-    <ul>
-        @if(Auth::check())
-            <li><a href='/'>Home</a></li>
-            <li><a href='/books/create'>Add a book</a></li>
-            <li><a href='/logout'>Log out</a></li>
-        @else
-            <li><a href='/'>Home</a></li>
-            <li><a href='/login'>Log in</a></li>
-            <li><a href='/register'>Register</a></li>
-        @endif
-    </ul>
-</nav>
 
 	<div class="container-fluid"> 
 		<div class="row">

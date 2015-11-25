@@ -22,7 +22,7 @@
 					@endif
 					<fieldset>
 						<label>Password:*</label><br>
-						<input type="text" name="password" class="form-box" value='{{ old('password') }}' required>
+						<input type="password" name="password" class="form-box" value='{{ old('password') }}' required>
 					</fieldset>
 					@if($errors->get('password'))
     					<ul>
