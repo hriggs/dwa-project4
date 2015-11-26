@@ -89,9 +89,9 @@ class AuthController extends Controller
     	return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
 	}
 	
-	/*public function getRegister() {
-	
-	}*/
+	public function getRegister() {
+		return view("auth.register")->with('states', $this->getStates());
+	}
 	
    /**
     *

@@ -80,9 +80,8 @@
 			<label>State:</label><br>
 			<select name="state">
 				@foreach($states as $state)
-				{{ $selected = ($user->state == $state) ? 'selected' : '' }}
-				
- 						<option value="{{ $state }}" {{ $selected}}>{{ $state }}</option>
+					{{ $selected = ($user->state == $state) ? 'selected' : '' }}
+ 					<option value="{{ $state }}" {{ $selected}}>{{ $state }}</option>
 				@endforeach	
 			</select>
 		</fieldset>
