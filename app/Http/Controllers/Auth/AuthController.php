@@ -84,8 +84,11 @@ class AuthController extends Controller
  	*/
 	public function getLogout()
 	{
+		if (\Auth::check()) {
+        	\Session::flash('flash_message', 'You have been logged out.');
+        }
+        
     	\Auth::logout();
-    	\Session::flash('flash_message','You have been logged out.');
     	return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
 	}
 	
