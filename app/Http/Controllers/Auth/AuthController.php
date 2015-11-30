@@ -84,6 +84,7 @@ class AuthController extends Controller
  	*/
 	public function getLogout()
 	{
+		// only show flash message if user logging out
 		if (\Auth::check()) {
         	\Session::flash('flash_message', 'You have been logged out.');
         }
