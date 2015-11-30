@@ -12,8 +12,6 @@
 */
 
 Route::get('/confirm', function() {
-	
-	echo "hi!";
 
     # You may access the authenticated user via the Auth facade
     $user = Auth::user();
@@ -62,6 +60,17 @@ Route::get('/debug', function() {
 
     echo '</pre>';
 
+});
+
+/**
+ * Guests cannot view the profile or stats pages.
+ */
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/profile', 'ProfileController@getIndex');
+    Route::post('/profile', 'ProfileController@postIndex');
+    
+    Route::get('/stats', 'StatsController@getIndex');
+    Route::post('/states', 'StatsController@postIndex');
 });
 
 # Show login form

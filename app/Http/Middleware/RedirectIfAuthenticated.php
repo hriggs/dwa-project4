@@ -35,7 +35,8 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next)
     {
         if ($this->auth->check()) {
-            return redirect('/home');
+        	\Session::flash('flash_message','You have already registered and are logged in.');
+            return redirect('/');
         }
 
         return $next($request);

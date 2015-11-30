@@ -62,6 +62,7 @@ Route::get('/debug', function() {
 
 });
 
+
 # Show login form
 Route::get('/login', 'Auth\AuthController@getLogin');
 
@@ -92,5 +93,15 @@ Route::controller("/high-scores", "HighScoresController");
 Route::controller("/", "IndexController");
 
 
+/**
+ * Guests cannot view the profile or stats pages.
+ */
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/profile', 'ProfileController@getIndex');
+    Route::post('/profile', 'ProfileController@postIndex');
+    
+    Route::get('/stats', 'StatsController@getIndex');
+    Route::post('/states', 'StatsController@postIndex');
+});
 
 
