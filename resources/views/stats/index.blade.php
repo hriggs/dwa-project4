@@ -5,5 +5,5 @@
 @stop
 
 @section('content')
-	Stats info here!
+	Stats info here
 @stop
