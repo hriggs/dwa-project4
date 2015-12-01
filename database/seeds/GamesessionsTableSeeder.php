@@ -33,6 +33,7 @@ class GamesessionsTableSeeder extends Seeder
 			    	'attempt_num' => $j,
 			    	'start_time' => Carbon\Carbon::now()->toDateTimeString(),
 			    	'end_time' => Carbon\Carbon::now()->toDateTimeString(),
+			    	'total_time' => 5,
 			    	'moves' => $moves,
 			    	'solved' => $solved,
 			    ]);

@@ -47,6 +47,12 @@ h1 {
 	text-align: center;
 }
 
+h2 {
+	margin-bottom: 0.5em;
+	font-family: 'Pompiere', cursive;
+	font-size: 400%;
+}
+
 .btn-primary {
 	background-color: #31241b;
 	background-image: url(../images/button.png);
@@ -210,6 +216,16 @@ select, input {
 .error {
 	color: #f1e742;
 	font-size: 60%;
+}
+
+/* Stats page */
+table, th, td {
+    border: 1px solid #333333;
+}
+
+th, td {
+	padding: 10px;
+	text-align: center;
 }
 
 /* Puzzles List */

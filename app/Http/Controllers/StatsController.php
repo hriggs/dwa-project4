@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
+use Auth;
 
 class StatsController extends Controller {
 	
@@ -16,7 +17,14 @@ class StatsController extends Controller {
     */
     public function getIndex() {
     	
-        return view("stats.index");
+    	// get the current user 
+    	$user = Auth::user();
+    	
+    	// get user's stats
+    	$stats = \App\Gamesession::with("puzzle")->orderBy("id", "ASC")->where("user_id", "=", $user->id)->get();
+    	//dump($stats);
+    	
+        return view("stats.index")->with(['stats'=>$stats, 'user'=>$user]);
     }
     
    /**

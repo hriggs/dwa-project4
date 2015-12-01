@@ -6,7 +6,6 @@
 
 @section('content')
 	<h2>Change Password</h2>
-	<br>
 	
     <form method="POST" action="/change-password" class="join">
 		{!! csrf_field() !!}

@@ -32,9 +32,7 @@ p {
 }
 
 .page-link a:hover {
-	color: #FAE0BB;
-	font-weight: bold;
-	text-decoration: underline;
+	color: #32251C;
 }
 
 .content {
@@ -47,6 +45,12 @@ h1 {
 	font-family: 'Pompiere', cursive;
 	font-size: 600%;
 	text-align: center;
+}
+
+h2 {
+	margin-bottom: 0.5em;
+	font-family: 'Pompiere', cursive;
+	font-size: 400%;
 }
 
 .btn-primary {
@@ -212,6 +216,16 @@ select, input {
 .error {
 	color: #f1e742;
 	font-size: 60%;
+}
+
+/* Stats page */
+table, th, td {
+    border: 1px solid #333333;
+}
+
+th, td {
+	padding: 5px;
+	text-align: center;
 }
 
 /* Puzzles List */
