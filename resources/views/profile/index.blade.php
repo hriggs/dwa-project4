@@ -6,7 +6,7 @@
 
 @section('content')
 	<h2>Welcome {{ $user->name }}!</h2>
-	<p>*Fields with stars cannot be left blank.</p>
+	<p>*Required</p>
 	<p>Leave both password fields blank if you wish to keep your previous password.<br>Password not shown for security reasons.</p>
 	<form method="POST" action="/profile" class="join">
 		{!! csrf_field() !!}
