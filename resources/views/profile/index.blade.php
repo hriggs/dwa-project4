@@ -7,12 +7,13 @@
 @section('content')
 	<h2>Welcome {{ $user->name }}!</h2>
 	<p>*Fields with stars cannot be left blank.</p>
-	<p>Leave password fields blank if you wish to keep your previous password.<br>Password not shown for security reasons.</p>
+	<p>Leave both password fields blank if you wish to keep your previous password.<br>Password not shown for security reasons.</p>
 	<form method="POST" action="/profile" class="join">
 		{!! csrf_field() !!}
 		<fieldset>
 			<label>Username:*</label><br>
-			<input type="text" name="username" class="form-box" value='{{$user->username}}' required>
+			<p>Must be less than 20 characters</p>
+			<input type="text" name="username" class="form-box" value='{{$user->username}}' maxlength="20" required>
 		</fieldset>
 		@if($errors->get('username'))
 			<ul>
@@ -23,6 +24,7 @@
 		@endif
 		<fieldset>
 			<label>Password:</label><br>
+			<p>Must be at least 6 characters</p>
 			<input type="password" name="password" class="form-box">
 		</fieldset>
 		@if($errors->get('password'))
@@ -101,6 +103,5 @@
 			<textarea name="bio" value='{{$user->bio}}'>{{$user->bio}}</textarea><br>
 		</fieldset>
 		<input type="submit" name="update" class="btn submit" value="Update Profile">
-	</form>
 	</form>
 @stop

@@ -29,15 +29,18 @@ class ProfileController extends Controller {
     */
     public function postIndex(Request $request) {
     	
-    	// validate input here
-    	// check if password fields match
-    	
     	// get current user
     	$user = Auth::user();
     	
-    	echo "db: " . $user->state;
-    	
-    	echo $request->state;
+        // validate the request data
+    	$this->validate($request, 
+    		["username" => "required|max:20",
+    		 "name" => "required|max:255",
+    		 "password" => "min:6",
+    		 "email" => "unique:users,email,".$user->id
+    		]);
+    							
+    	// check if password fields match
     	
     	// update fields
     	$user->username = $request->username;
@@ -48,8 +51,16 @@ class ProfileController extends Controller {
     	$user->country = $request->country;
     	$user->bio = $request->bio;
     	
-    	// only update password if user filled in passwords
-    	if (strlen($request->password) != 0) { 
+    	/* 
+    	I had to check this manually and not via Laravel validation 
+    	bc I wanted the user to leave either/both blank 
+    	if they wanted to leave their password as is
+    	*/
+    	// only update password if user filled in matching passwords
+		if (strlen($request->password) < 6 || !($request->password === $request->password_confirmation)) {
+			\Session::flash('flash_message', 'Profile fields updated. Password not changed.');
+		} else {
+    		\Session::flash('flash_message', 'Profile updated, including password.');
     		$user->password = \Hash::make($request->password);
     	}
     	

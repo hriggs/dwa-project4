@@ -7,6 +7,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -54,6 +55,7 @@ class AuthController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
+            'username' => 'required|max:20'
         ]);
     }
 
@@ -93,6 +95,11 @@ class AuthController extends Controller
     	return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
 	}
 	
+	/**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
 	public function getRegister() {
 		return view("auth.register")->with('states', $this->getStates());
 	}

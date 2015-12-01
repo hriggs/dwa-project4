@@ -9,12 +9,12 @@
     <h2>Register</h2>
     <p>*Required</p>
     
-    
 	<form method="POST" action="/register" class="join">
 		{!! csrf_field() !!}
 		<fieldset>
 			<label>Username:*</label><br>
-			<input type="text" name="username" class="form-box" value='{{ old('username') }}' required>
+			<p>Must be less than 20 characters</p>
+			<input type="text" name="username" class="form-box" value='{{ old('username') }}' maxlength="20" required>
 		</fieldset>
 		@if($errors->get('username'))
 			<ul>
@@ -25,6 +25,7 @@
 		@endif
 		<fieldset>
 			<label>Password:*</label><br>
+			<p>Must be at least 6 characters</p>
 			<input type="password" name="password" class="form-box" required>
 		</fieldset>
 		@if($errors->get('password'))
