@@ -40,8 +40,8 @@ class CreateGamesessionsTable extends Migration
      */
     public function down()
     {
-    	// drop foreign keys and columns
-    	Schema::table('books', function (Blueprint $table) {
+    	// drop foreign keys and related columns
+    	Schema::table('gamesessions', function (Blueprint $table) {
             $table->dropForeign('gamesessions_user_id_foreign');
             $table->dropColumn('user_id');
             $table->dropForeign('gamesessions_puzzle_id_foreign');
