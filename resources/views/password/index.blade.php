@@ -13,7 +13,7 @@
 		<fieldset>
 			<label>Password:*</label><br>
 			<p>Must be at least 6 characters</p>
-			<input type="password" name="password" class="form-box" required>
+			<input type="password" name="password" class="form-box" maxlength="60" required>
 		</fieldset>
 		@if($errors->get('password'))
 			<ul>
@@ -24,7 +24,7 @@
 		@endif
 		<fieldset>
 			<label>Confirm Password:*</label><br>
-			<input type="password" name="password_confirmation" class="form-box" required>
+			<input type="password" name="password_confirmation" class="form-box" maxlength="60" required>
 		</fieldset>
 		@if($errors->get('password'))
 			<ul>

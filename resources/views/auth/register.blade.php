@@ -26,7 +26,7 @@
 		<fieldset>
 			<label>Password:*</label><br>
 			<p>Must be at least 6 characters</p>
-			<input type="password" name="password" class="form-box" required>
+			<input type="password" name="password" class="form-box" maxlength="60" required>
 		</fieldset>
 		@if($errors->get('password'))
 			<ul>
@@ -37,7 +37,7 @@
 		@endif
 		<fieldset>
 			<label>Confirm Password:*</label><br>
-			<input type="password" name="password_confirmation" class="form-box" required>
+			<input type="password" name="password_confirmation" class="form-box" maxlength="60" required>
 		</fieldset>
 		@if($errors->get('password'))
 			<ul>
@@ -48,7 +48,7 @@
 		@endif
 		<fieldset>
 			<label>Name:*</label><br>
-			<input type="text" name="name" class="form-box" value='{{ old('name') }}' required>
+			<input type="text" name="name" class="form-box" value='{{ old('name') }}' maxlength="255" required>
 		</fieldset>
 		@if($errors->get('name'))
 			<ul>
@@ -59,7 +59,7 @@
 		@endif
 		<fieldset>
 			<label>E-mail:*</label><br>
-			<input type="text" name="email" class="form-box" value='{{ old('email') }}' required>
+			<input type="text" name="email" class="form-box" value='{{ old('email') }}' maxlength="255" required>
 		</fieldset>
 		@if($errors->get('email'))
 			<ul>
@@ -70,7 +70,7 @@
 		@endif
 		<fieldset>
 			<label>City:</label><br>
-			<input type="text" name="city" class="form-box" value='{{ old('city') }}'>
+			<input type="text" name="city" class="form-box" value='{{ old('city') }}' maxlength="255">
 		</fieldset>
 		@if($errors->get('city'))
 			<ul>
@@ -89,7 +89,7 @@
 		</fieldset>
 		<fieldset>
 			<label>Country:</label><br>
-			<input type="text" name="country" class="form-box" value='{{ old('country') }}'>
+			<input type="text" name="country" class="form-box" value='{{ old('country') }}' maxlength="255">
 		</fieldset>
 		@if($errors->get('country'))
 			<ul>
