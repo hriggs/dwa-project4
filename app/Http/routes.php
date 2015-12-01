@@ -100,6 +100,9 @@ Route::group(['middleware' => 'auth'], function () {
     
     Route::get('/stats', 'StatsController@getIndex');
     Route::post('/states', 'StatsController@postIndex');
+    
+    Route::get('/change-password', 'ChangePasswordController@getIndex');
+    Route::post('/change-password', 'ChangePasswordController@postIndex');
 });
 
 
