@@ -46,6 +46,7 @@
               		<ul class="dropdown-menu logged-in">
                 		<li><a href="/profile">My Profile</a></li>
                 		<li><a href="/stats">My Stats</a></li>
+                		<li><a href="/change-password">Change Password</a></li>
                 		<li><a href="/logout">Logout</a></li>
               		</ul>
             	</li>

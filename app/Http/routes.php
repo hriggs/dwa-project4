@@ -78,17 +78,15 @@ Route::get('/register', 'Auth\AuthController@getRegister');
 # Process registration form
 Route::post('/register', 'Auth\AuthController@postRegister');
 
-//Route::controller("/join", "JoinController");
-
 Route::controller("/puzzles", "PuzzlesController");
 
 Route::controller("/profile", "ProfileController");
 
 Route::controller("/stats", "StatsController");
 
-Route::controller("/high-scores", "HighScoresController");
+Route::controller("/change-password", "ChangePasswordController");
 
-//Route::controller("/log-out", "LogOutController");
+Route::controller("/high-scores", "HighScoresController");
 
 Route::controller("/", "IndexController");
 
