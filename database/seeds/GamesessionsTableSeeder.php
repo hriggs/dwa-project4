@@ -21,8 +21,8 @@ class GamesessionsTableSeeder extends Seeder
     			// generate random number of moves puzzle took
 				$moves = rand(5, 50);  
 				
-				// whether puzzle was solved or not
-				$solved = rand(0, 1);
+				// generate random time-- to be changed to be actual time
+				$time = rand(5, 20);
 				
 				// insert data into table
     			DB::table('gamesessions')->insert([
@@ -33,9 +33,8 @@ class GamesessionsTableSeeder extends Seeder
 			    	'attempt_num' => $j,
 			    	'start_time' => Carbon\Carbon::now()->toDateTimeString(),
 			    	'end_time' => Carbon\Carbon::now()->toDateTimeString(),
-			    	'total_time' => 5,
+			    	'total_time' => $time,
 			    	'moves' => $moves,
-			    	'solved' => $solved,
 			    ]);
     		}
     	}

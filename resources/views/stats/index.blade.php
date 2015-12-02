@@ -26,9 +26,9 @@
 			</form>
 		</div>
 		<div class="middle">
-			<h3>Stats at a glance:</h3>
-			<p>Total Puzzles Attempted: Number here</p>
-			<p>Fastest Puzzle Solve: Number here</p>
+			<h3>Stats at a Glance:</h3>
+			<p>Total Puzzles Solved: Number here</p>
+			<p>Fastest Time: Number here</p>
 			<p>Least Number of Moves: Number here</p>
 		</div>
 		<div class="small">
@@ -48,7 +48,6 @@
     		<th>End Time</th>
     		<th>Total Time</th>
     		<th>Total Moves</th>
-    		<th>Was Puzzle Solved?</th>
 		</tr>
 		@foreach($stats as $stat)
 	    	<tr>
@@ -58,13 +57,6 @@
 	    		<td>{{ $stat->end_time }}</td>
 	    		<td>{{ $stat->total_time }}</td>
 	    		<td>{{ $stat->moves }}</td>
-	    		<td>
-	    			@if($stat->solved)
-	    				Yes
-	    		 	@else
-        	  			No
-        			@endif
-	    		</td>
 	        </tr>
 	    @endforeach
     </table>

@@ -30,7 +30,6 @@ class CreateGamesessionsTable extends Migration
             $table->timestamp('end_time');
             $table->integer('total_time');
             $table->integer('moves');
-            $table->boolean('solved');
         });
     }
 
