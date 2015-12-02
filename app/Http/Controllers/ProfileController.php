@@ -16,7 +16,7 @@ class ProfileController extends Controller {
    /**
     * Responds to requests to GET /profile
     */
-    public function getIndex(Request $request) {
+    public function getIndex() {
     	
     	// get the current user 
     	$user = Auth::user();

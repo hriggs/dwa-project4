@@ -13,13 +13,13 @@
 				<fieldset>
 					<label>Sort Stats by...</label><br>
 						<select name="stats">
-						 	<option value="puzzle">Group Puzzles Together</option>
 						 	<option value="first">First to Last Attempt</option>
 		 					<option value="last">Last to First Attempt</option>
 		 					<option value="fast">Fastest to Slowest Time</option>
 		 					<option value="slow">Slowest to Fastest Time</option>
-		 					<option value="least">Least Moves First</option>
-		 					<option value="most">Most Moves First</option>
+		 					<option value="least">Least to Most Moves</option>
+		 					<option value="most">Most to Least Moves</option>
+ 							<option value="puzzle">Group Puzzles Together</option>
 						</select>
 				</fieldset>
 				<input type="submit" name="sort" class="btn submit" value="Sort">
@@ -27,9 +27,27 @@
 		</div>
 		<div class="middle">
 			<h3>Stats at a Glance:</h3>
-			<p>Total Puzzles Solved: Number here</p>
-			<p>Fastest Time: Number here</p>
-			<p>Least Number of Moves: Number here</p>
+			<p>Total Puzzles Solved: 
+				@if(isset($stats))
+					Number here
+				@else
+					N/A
+				@endif
+			</p>
+			<p>Fastest Time:
+				@if(isset($stats))
+					Number here
+				@else
+					N/A
+				@endif
+			</p>
+			<p>Least Number of Moves:
+				@if(isset($stats))
+					Number here
+				@else
+					N/A
+				@endif
+			</p>
 		</div>
 		<div class="small">
 			<h3>Want to delete your stats?</h3>
@@ -49,15 +67,17 @@
     		<th>Total Time</th>
     		<th>Total Moves</th>
 		</tr>
-		@foreach($stats as $stat)
-	    	<tr>
-	    		<td>{{ $stat->puzzle->title }}</td>
-	    		<td>{{ $stat->attempt_num }}</td>
-	    		<td>{{ $stat->start_time }}</td>
-	    		<td>{{ $stat->end_time }}</td>
-	    		<td>{{ $stat->total_time }}</td>
-	    		<td>{{ $stat->moves }}</td>
-	        </tr>
-	    @endforeach
+		@if(isset($stats))
+			@foreach($stats as $stat)
+		    	<tr>
+		    		<td>{{ $stat->puzzle->title }}</td>
+		    		<td>{{ $stat->attempt_num }}</td>
+		    		<td>{{ $stat->start_time }}</td>
+		    		<td>{{ $stat->end_time }}</td>
+		    		<td>{{ $stat->total_time }}</td>
+		    		<td>{{ $stat->moves }}</td>
+		        </tr>
+		    @endforeach
+	    @endif
     </table>
 @stop
