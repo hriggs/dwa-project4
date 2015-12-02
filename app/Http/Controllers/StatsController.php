@@ -32,7 +32,7 @@ class StatsController extends Controller {
     */
     public function postIndex() {
     	
-    	return "Profile controller -- by POST!";
+    	return "Stats controller -- by POST!";
         //return view("index.index");
     }
 }

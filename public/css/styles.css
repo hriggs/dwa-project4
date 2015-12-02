@@ -53,6 +53,10 @@ h2 {
 	font-size: 400%;
 }
 
+h3 {
+	margin-top: 0px;
+}
+
 .btn-primary {
 	background-color: #31241b;
 	background-image: url(../images/button.png);
@@ -223,9 +227,39 @@ table, th, td {
     border: 1px solid #333333;
 }
 
+table {
+	width: 100%;
+}
+
 th, td {
 	padding: 10px;
 	text-align: center;
+}
+
+.sort {
+	background-color: #31241b;
+	background-image: url(../images/button.png);
+	background-repeat:repeat;
+	padding: 40px;
+	color: #fae0bb;
+	font-size: 120%;
+	margin-bottom: 2em;
+}
+
+.small {
+	float: left;
+	width: 20%;
+}
+.middle p, .small p {
+	font-size: 110%;
+}
+.middle {
+	border-left: 2px solid #E8E0BB;
+	border-right: 2px solid #E8E0BB;
+	padding: 0 6%;
+	float: left;
+	width: 50%;
+	margin: 0 5%;
 }
 
 /* Puzzles List */
@@ -236,4 +270,4 @@ th, td {
 
 .puzzle {
 	margin-bottom: 5em;
-	}
+}
