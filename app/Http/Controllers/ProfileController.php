@@ -52,7 +52,7 @@ class ProfileController extends Controller {
     	$user->save();
     	
     	\Session::flash('flash_message', 'Profile updated.');
-        return view("profile.index")->with(['user'=>$user,'states'=>$this->getStates()]);
+    	return redirect('/profile')->with(['user'=>$user,'states'=>$this->getStates()]);
     }
     
    /**

@@ -41,7 +41,7 @@ class StatsController extends Controller {
     		// if stats do not exist yet
     		if (\App\Gamesession::where("user_id", "=", $user->id)->count() == 0) {
     			\Session::flash('flash_message','No stats to sort. Go play some games!');
-    			return view("stats.index")->with('user', $user);
+    			return redirect('/stats')->with('user', $user);
     		}
     		
     		// sort based on form specifications
@@ -78,7 +78,7 @@ class StatsController extends Controller {
 			}
     		
     		\Session::flash('flash_message','Your stats were deleted.');
-    		return view("stats.index")->with('user', $user);
+    		return redirect('/stats')->with('user', $user);
     	}
     }
 }

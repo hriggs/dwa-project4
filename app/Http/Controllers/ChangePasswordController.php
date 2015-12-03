@@ -38,6 +38,6 @@ class ChangePasswordController extends Controller {
     	$user->save();
     	
     	\Session::flash('flash_message', 'Password has been changed.');
-    	return view("password.index");
+    	return redirect('/change-password');
     }
 }
