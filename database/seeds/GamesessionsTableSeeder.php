@@ -11,7 +11,7 @@ class GamesessionsTableSeeder extends Seeder
      */
     public function run()
     {
-    	// create random gamesession data for first 50 users
+    	// create random gamesession data for first 2 users-- increase
     	for ($i = 1; $i < 3; $i++) {
     		
     		// create random number of gamesessions for each user

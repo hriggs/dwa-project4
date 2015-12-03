@@ -15,10 +15,10 @@ class CreateGamesessionsTable extends Migration
         Schema::create('gamesessions', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->integer('user_id')->unsigned();
+            $table->integer('user_id');
             
             // `user_id` is a foreign key that connects to the `id` field in the `users` table
-            $table->foreign('user_id')->references('id')->on('users');
+            //$table->foreign('user_id')->references('id')->on('users');
             
             $table->integer('puzzle_id')->unsigned();
             
@@ -42,8 +42,8 @@ class CreateGamesessionsTable extends Migration
     {
     	// drop foreign keys and related columns
     	Schema::table('gamesessions', function (Blueprint $table) {
-            $table->dropForeign('gamesessions_user_id_foreign');
-            $table->dropColumn('user_id');
+            //$table->dropForeign('gamesessions_user_id_foreign');
+            //$table->dropColumn('user_id');
             $table->dropForeign('gamesessions_puzzle_id_foreign');
             $table->dropColumn('puzzle_id');
         });
