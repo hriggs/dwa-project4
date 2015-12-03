@@ -24,6 +24,8 @@ class StatsController extends Controller {
     	// get user's stats
     	$stats = \App\Gamesession::with("puzzle")->orderBy("id", "ASC")->where("user_id", "=", $user->id)->get();
     	
+    	    	echo count($stats);
+    	
         return view("stats.index")->with(['stats'=>$stats, 'user'=>$user]);
     }
     
