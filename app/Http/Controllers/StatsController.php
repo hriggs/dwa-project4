@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
+use DB;
 
 class StatsController extends Controller {
 	
@@ -24,8 +25,6 @@ class StatsController extends Controller {
     	// get user's stats
     	$stats = \App\Gamesession::with("puzzle")->orderBy("id", "ASC")->where("user_id", "=", $user->id)->get();
     	
-    	    	echo count($stats);
-    	
         return view("stats.index")->with(['stats'=>$stats, 'user'=>$user]);
     }
     
@@ -39,12 +38,6 @@ class StatsController extends Controller {
     	
     	// either sort or delete the data
     	if ($request->input("sort")) {
-    		
-    		// if stats do not exist yet
-    		if (\App\Gamesession::where("user_id", "=", $user->id)->count() == 0) {
-    			\Session::flash('flash_message','No stats to sort. Go play some games!');
-    			return redirect('/stats')->with('user', $user);
-    		}
     		
     		// sort based on form specifications
     		if ($request->stats == "first") {
@@ -72,10 +65,14 @@ class StatsController extends Controller {
     		}
     	} else if ($request->input("delete")) {
     		
-    		// delete stats
-    		$stats = \App\Gamesession::where("user_id", "=", $user->id)->get();
-    		
-    		foreach($stats as $stat) {
+    		// delete stats from pivot table
+    		$user->gamesessions()->detach();
+
+			// get stats from gamesessions table
+			$stats = \App\Gamesession::where("user_id", "=", $user->id)->get();
+			
+			// delete stats from gamesessions table
+			foreach($stats as $stat) {
     			$stat->delete();
 			}
     		

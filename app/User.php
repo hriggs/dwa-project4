@@ -39,6 +39,6 @@ class User extends Model implements AuthenticatableContract,
     
     public function gamesessions() {
     	// define a many-to-many relationship
-        return $this->belongsToMany('\App\Gamesessions')->withTimestamps();;
+        return $this->belongsToMany('\App\Gamesession')->withTimestamps();;
     }
 }
