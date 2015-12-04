@@ -16,9 +16,36 @@ class HighScoresController extends Controller {
     */
     public function getIndex() {
     	
-    	// get all scores
+    	// get default high scores: fastest time for first puzzle
+    	$gamesessions = \App\Gamesession::with("puzzle")->orderBy("total_time", "ASC")->where("puzzle_id", "=", 1)->take(20)->get();
     	
-        return view("scores.index");
+    	//dump($gamesessions);
+    	
+    	// array to hold usernames
+    	$usernames = [];
+    	
+    	$users = \App\User::all(); 
+    	
+    	// get list of gamesession user ids
+    	$ids = $gamesessions->lists("user_id");
+    	
+    	$k = 0; 
+    	
+    	
+    	// for every gamesession
+    	for ($i = 1; $i < count($gamesessions) + 1; $i++) {
+    		
+    		echo "In contorller: " . $i;
+    		
+    		$user = $users->where("id", $ids[$k])->first();
+    		$k++;
+    		
+    		$usernames[$i] = $user["username"];
+    	}
+    	
+    	$ranking = 0;
+    	
+        return view("scores.index")->with(["gamesessions"=>$gamesessions, "ranking"=>$ranking, "usernames"=>$usernames]);
     }
     
    /**
