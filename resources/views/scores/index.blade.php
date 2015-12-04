@@ -5,5 +5,5 @@
 @stop
 
 @section('content')
-	High scores info here
+	<h2>High Scores</h2>
 @stop

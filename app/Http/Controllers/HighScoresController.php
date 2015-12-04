@@ -16,6 +16,8 @@ class HighScoresController extends Controller {
     */
     public function getIndex() {
     	
+    	// get all scores
+    	
         return view("scores.index");
     }
     
