@@ -25,7 +25,15 @@ class StatsController extends Controller {
     	// get user's stats
     	$stats = \App\Gamesession::with("puzzle")->orderBy("id", "ASC")->where("user_id", "=", $user->id)->get();
     	
-        return view("stats.index")->with(['stats'=>$stats, 'user'=>$user]);
+    	// get default user stats: fastest time for first puzzle
+    	$gamesessions = \App\Gamesession::with("puzzle")->orderBy("id", "ASC")->where("user_id", "=", $user->id)->get();
+    	
+    	// get list of created puzzles
+		$puzzles = \App\Puzzle::where("created", "=", "1")->get();
+    	
+        return view("stats.index")->with(['stats'=>$stats, 
+        								  'user'=>$user,
+        								  'puzzle_titles'=>$this->returnTitles($puzzles)]);
     }
     
    /**
@@ -35,33 +43,43 @@ class StatsController extends Controller {
     	
 	   	// get the current user 
 		$user = Auth::user();
+		
+		// store form data
+    	$puzzle_title = $request->puzzle;
+    	$sort_criteria = $request->criteria; 
+    	
+    	//echo $puzzle_title . " " . $sort_criteria;
     	
     	// either sort or delete the data
     	if ($request->input("sort")) {
     		
+			// get list of created puzzles
+			$puzzles = \App\Puzzle::where("created", "=", "1")->get();
+			
+			// get selected puzzle and its id
+			$puzzle = $puzzles->where("title", $puzzle_title)->first();
+			
+			$puzzle_id = $puzzle["id"];
+
     		// sort based on form specifications
-    		if ($request->stats == "first") {
-    			$stats = \App\Gamesession::with("puzzle")->orderBy("id", "ASC")->where("user_id", "=", $user->id)->get();
-    			return view("stats.index")->with(['stats'=>$stats, 'user'=>$user]);
-    		} elseif ($request->stats == "last") {
-    			$stats = \App\Gamesession::with("puzzle")->orderBy("id", "DESC")->where("user_id", "=", $user->id)->get();
-    			return view("stats.index")->with(['stats'=>$stats, 'user'=>$user]);
-    		} elseif ($request->stats == "fast") {
-    			$stats = \App\Gamesession::with("puzzle")->orderBy("total_time", "ASC")->where("user_id", "=", $user->id)->get();
-    			return view("stats.index")->with(['stats'=>$stats, 'user'=>$user]);
-    		} elseif ($request->stats == "slow") {
-    			$stats = \App\Gamesession::with("puzzle")->orderBy("total_time", "DESC")->where("user_id", "=", $user->id)->get();
-    			return view("stats.index")->with(['stats'=>$stats, 'user'=>$user]);
-    		} elseif ($request->stats == "least") {
-    			$stats = \App\Gamesession::with("puzzle")->orderBy("moves", "ASC")->where("user_id", "=", $user->id)->get();
-    			return view("stats.index")->with(['stats'=>$stats, 'user'=>$user]);
-    		} elseif ($request->stats == "most") {
-    			$stats = \App\Gamesession::with("puzzle")->orderBy("moves", "DESC")->where("user_id", "=", $user->id)->get();
-    			return view("stats.index")->with(['stats'=>$stats, 'user'=>$user]);
-    		} elseif ($request->stats == "puzzle") {
-    			// ONLY RETURNING ONE ROW-- TO FIX
-    			$stats = \App\Gamesession::with("puzzle")->where("user_id", "=", $user->id)->GroupBy("puzzle_id")->get();
-    			return view("stats.index")->with(['stats'=>$stats, 'user'=>$user]);
+    		if ($request->criteria == "first") {
+    			$stats = \App\Gamesession::with("puzzle")->orderBy("id", "ASC")->where("puzzle_id", "=", $puzzle_id)->where("user_id", "=", $user->id)->get();
+    			return view("stats.index")->with(['stats'=>$stats, 'user'=>$user,'puzzle_titles'=>$this->returnTitles($puzzles)]);
+    		} elseif ($request->criteria == "last") {
+    			$stats = \App\Gamesession::with("puzzle")->orderBy("id", "DESC")->where("puzzle_id", "=", $puzzle_id)->where("user_id", "=", $user->id)->get();
+    			return view("stats.index")->with(['stats'=>$stats, 'user'=>$user,'puzzle_titles'=>$this->returnTitles($puzzles)]);
+    		} elseif ($request->criteria == "fast") {
+    			$stats = \App\Gamesession::with("puzzle")->orderBy("total_time", "ASC")->where("puzzle_id", "=", $puzzle_id)->where("user_id", "=", $user->id)->get();
+    			return view("stats.index")->with(['stats'=>$stats, 'user'=>$user,'puzzle_titles'=>$this->returnTitles($puzzles)]);
+    		} elseif ($request->criteria == "slow") {
+    			$stats = \App\Gamesession::with("puzzle")->orderBy("total_time", "DESC")->where("puzzle_id", "=", $puzzle_id)->where("user_id", "=", $user->id)->get();
+    			return view("stats.index")->with(['stats'=>$stats, 'user'=>$user,'puzzle_titles'=>$this->returnTitles($puzzles)]);
+    		} elseif ($request->criteria == "least") {
+    			$stats = \App\Gamesession::with("puzzle")->orderBy("moves", "ASC")->where("puzzle_id", "=", $puzzle_id)->where("user_id", "=", $user->id)->get();
+    			return view("stats.index")->with(['stats'=>$stats, 'user'=>$user,'puzzle_titles'=>$this->returnTitles($puzzles)]);
+    		} elseif ($request->criteria == "most") {
+    			$stats = \App\Gamesession::with("puzzle")->orderBy("moves", "DESC")->where("puzzle_id", "=", $puzzle_id)->where("user_id", "=", $user->id)->get();
+    			return view("stats.index")->with(['stats'=>$stats, 'user'=>$user,'puzzle_titles'=>$this->returnTitles($puzzles)]);
     		}
     	} else if ($request->input("delete")) {
     		
@@ -79,5 +97,20 @@ class StatsController extends Controller {
     		\Session::flash('flash_message','Your stats were deleted.');
     		return redirect('/stats')->with('user', $user);
     	}
+    }
+    
+   /**
+    * Return array of puzzle titles
+    */
+    public function returnTitles($puzzles) {
+    	
+    	$puzzle_titles = [];
+    	
+    	// store puzzle titles in array
+    	foreach($puzzles as $puzzle) {
+    		$puzzle_titles[] = $puzzle->title;
+    	}
+    	
+    	return $puzzle_titles;
     }
 }

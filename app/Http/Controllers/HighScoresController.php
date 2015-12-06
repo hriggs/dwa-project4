@@ -85,7 +85,6 @@ class HighScoresController extends Controller {
     */
     public function returnTitles($puzzles) {
     	
-    	
     	$puzzle_titles = [];
     	
     	// store puzzle titles in array

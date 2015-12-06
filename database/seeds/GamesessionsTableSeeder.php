@@ -11,7 +11,7 @@ class GamesessionsTableSeeder extends Seeder
      */
     public function run()
     {
-    	// create random gamesession data for first 2 users-- increase
+    	// create random gamesession data for first 2 users for 1st game-- increase
     	for ($i = 1; $i < 3; $i++) {
     		
     		// create random number of gamesessions for each user
@@ -30,6 +30,34 @@ class GamesessionsTableSeeder extends Seeder
 			    	'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 			    	'user_id' => $i,
 			    	'puzzle_id' => 1,
+			    	'attempt_num' => $j,
+			    	'start_time' => Carbon\Carbon::now()->toDateTimeString(),
+			    	'end_time' => Carbon\Carbon::now()->toDateTimeString(),
+			    	'total_time' => $time,
+			    	'moves' => $moves,
+			    ]);
+    		}
+    	}
+    	
+    	// create random gamesession data for first 2 users for 2nd game-- increase
+    	for ($i = 1; $i < 3; $i++) {
+    		
+    		// create random number of gamesessions for each user
+    		$sessions = rand(1, 20);
+    		for ($j = 1; $j < $sessions; $j++) {
+    			
+    			// generate random number of moves puzzle took
+				$moves = rand(5, 50);  
+				
+				// generate random time-- to be changed to be actual time
+				$time = rand(5, 20);
+				
+				// insert data into table
+    			DB::table('gamesessions')->insert([
+			    	'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+			    	'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+			    	'user_id' => $i,
+			    	'puzzle_id' => 4,
 			    	'attempt_num' => $j,
 			    	'start_time' => Carbon\Carbon::now()->toDateTimeString(),
 			    	'end_time' => Carbon\Carbon::now()->toDateTimeString(),

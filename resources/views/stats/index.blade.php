@@ -13,23 +13,22 @@
 			    <form method="POST" action="/stats">
 					{!! csrf_field() !!}
 					<fieldset>
-						<label>See High Scores for:</label><br>
+						<label>See stats for:</label><br>
 							<select name="puzzle">
 								@foreach($puzzle_titles as $title)
-									<option value="{{ $title }}" {{ $data[$title] }}>{{ $title }}</option>
+									<option value="{{ $title }}">{{ $title }}</option>
 								@endforeach
 							</select>
 					</fieldset>
 					<fieldset>
-						<label>Sort Stats by...</label><br>
-							<select name="stats">
+						<label>Sort Stats by:</label><br>
+							<select name="criteria">
 							 	<option value="first">First to Last Attempt</option>
 			 					<option value="last">Last to First Attempt</option>
 			 					<option value="fast">Fastest to Slowest Time</option>
 			 					<option value="slow">Slowest to Fastest Time</option>
 			 					<option value="least">Least to Most Moves</option>
 			 					<option value="most">Most to Least Moves</option>
-	 							<option value="puzzle">Group Puzzles Together</option>
 							</select>
 					</fieldset>
 					<input type="submit" name="sort" class="btn submit" value="Sort">
