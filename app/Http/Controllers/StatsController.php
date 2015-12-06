@@ -22,19 +22,27 @@ class StatsController extends Controller {
     	// get the current user 
     	$user = Auth::user();
     	
-    	// get user's stats
+    	// get user's default stats
     	$stats = \App\Gamesession::with("puzzle")->orderBy("id", "ASC")->where("user_id", "=", $user->id)->where("puzzle_id", "=", 1)->get();
     	
-    	// get default user stats: fastest time for first puzzle
-    	$gamesessions = \App\Gamesession::with("puzzle")->orderBy("id", "ASC")->where("user_id", "=", $user->id)->get();
+    	// get all gamesessions for this user
+    	$gamesessions = \App\Gamesession::with("puzzle")->where("user_id", "=", $user->id)->get();
     	
+    	// store at a glance stats	
+    	$glance_stats = array(
+    		"puzzles_solved" => count($gamesessions),
+    		"min_time" => $gamesessions->min("total_time"),   
+			"min_moves" => $gamesessions->min("moves"),
+    	); 
+
     	// get list of created puzzles
 		$puzzles = \App\Puzzle::where("created", "=", "1")->get();
     	
         return view("stats.index")->with(['stats'=>$stats, 
         								  'user'=>$user,
         								  'puzzle_titles'=>$this->returnTitles($puzzles),
-        								  'data'=>$this->returnDropdownData($request)]);
+        								  'data'=>$this->returnDropdownData($request),
+        								  'glance_stats' => $glance_stats]);
     }
     
    /**
@@ -50,6 +58,16 @@ class StatsController extends Controller {
     	
     	// either sort or delete the data
     	if ($request->input("sort")) {
+    		
+    		// get all gamesessions for this user
+	    	$gamesessions = \App\Gamesession::with("puzzle")->where("user_id", "=", $user->id)->get();
+			
+			// store at a glance stats	
+	    	$glance_stats = array(
+	    		"puzzles_solved" => count($gamesessions),
+	    		"min_time" => $gamesessions->min("total_time"),   
+				"min_moves" => $gamesessions->min("moves"),
+	    	); 
     		
 	    	// store form data
 	    	$puzzle_title = $request->puzzle;
@@ -79,7 +97,8 @@ class StatsController extends Controller {
 			return view("stats.index")->with(['stats'=>$stats, 
 											  'user'=>$user,
 											  'puzzle_titles'=>$this->returnTitles($puzzles),
-											  'data'=>$this->returnDropdownData($request)]);
+											  'data'=>$this->returnDropdownData($request),
+											  'glance_stats' => $glance_stats]);
     		
     	} else if ($request->input("delete")) {
     		
@@ -100,9 +119,21 @@ class StatsController extends Controller {
 			foreach($stats as $stat) {
     			$stat->delete();
 			}
+			
+			// get all gamesessions for this user
+	    	$gamesessions = \App\Gamesession::with("puzzle")->where("user_id", "=", $user->id)->get();
+			
+			// store at a glance stats	
+	    	$glance_stats = array(
+	    		"puzzles_solved" => count($gamesessions),
+	    		"min_time" => $gamesessions->min("total_time"),   
+				"min_moves" => $gamesessions->min("moves"),
+	    	); 
     		
     		\Session::flash('flash_message','Your stats were deleted.');
-    		return redirect('/stats')->with(['user'=>$user,'puzzle_titles'=>$this->returnTitles($puzzles)]);
+    		return redirect('/stats')->with(['user'=>$user,
+    										 'puzzle_titles'=>$this->returnTitles($puzzles),
+    										 'glance_stats' => $glance_stats]);
     	}
     }
     

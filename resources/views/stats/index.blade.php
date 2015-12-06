@@ -35,9 +35,9 @@
 		</div>
 	<div class="middle">
 		<h3>Stats at a Glance:</h3>
-		<p>Total Puzzles Solved: Number here</p>
-		<p>Fastest Time: Number here</p>
-		<p>Least Number of Moves: Number here</p>
+		<p>Total Puzzles Solved: {{ $glance_stats["puzzles_solved"] }}</p>
+		<p>Fastest Time: {{ $glance_stats["puzzles_solved"] == 0 ? "N/A" : $glance_stats["min_time"] }}</p>
+		<p>Least Number of Moves: {{ $glance_stats["puzzles_solved"] == 0 ? "N/A" : $glance_stats["min_moves"] }}</p>
 	</div>
 	<div class="small">
 		<h3>Want to delete your stats?</h3>
