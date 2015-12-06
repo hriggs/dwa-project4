@@ -15,7 +15,7 @@ class HighScoresController extends Controller {
    /**
     * Responds to requests to GET /high-scores
     */
-    public function getIndex() {
+    public function getIndex(Request $request) {
     	
     	// get default high scores: fastest time for first puzzle
     	$gamesessions = \App\Gamesession::with("puzzle")->orderBy("total_time", "ASC")->where("puzzle_id", "=", 1)->take(20)->get();
@@ -33,7 +33,8 @@ class HighScoresController extends Controller {
         								   "ranking"=>$ranking, 
         								   "usernames"=>$this->returnUsernames($gamesessions),
         								   "puzzle_titles"=>$this->returnTitles($puzzles),
-        								   "headers"=>$headers]);
+        								   "headers"=>$headers,
+        								   "data"=>$this->returnDropdownData($request)]);
     }
     
    /**
@@ -64,6 +65,9 @@ class HighScoresController extends Controller {
     		$headers = ["Moves", "Time"];
     	}
     	
+    	// get selected list of puzzles
+    	$puzzle_titles = $this->returnTitles($puzzles);
+    	
     	// beginning rank must be 0 for index reasons in view
     	$ranking = 0;
     	
@@ -71,8 +75,9 @@ class HighScoresController extends Controller {
         return view("scores.index")->with(["gamesessions"=>$gamesessions, 
         								   "ranking"=>$ranking, 
         								   "usernames"=>$this->returnUsernames($gamesessions),
-        								   "puzzle_titles"=>$this->returnTitles($puzzles),
-     									   "headers"=>$headers]);
+        								   "puzzle_titles"=>$puzzle_titles,
+     									   "headers"=>$headers,
+     									   "data"=>$this->returnDropdownData($request)]);
     }
     
    /**
@@ -116,5 +121,31 @@ class HighScoresController extends Controller {
     	}
     	
     	return $usernames; 
+    }
+    
+   /**
+    * Return an array which shows which dropdown values were selected
+    * 
+    *  @param $request request object
+    */
+    public function returnDropdownData(Request $request) {
+    	
+    	$data = [];
+    	
+    	// dropdown values	
+    	$puzzles = array("The Frog Puzzle", "Created");
+    	$criteria = array("total_time","moves");		  
+    	
+    	// for every puzzle value, save as selected if selected
+    	for ($i = 0; $i < count($puzzles); $i++) {
+    		$request->input("puzzle") === $puzzles[$i] ? ($data[$puzzles[$i]] = "selected") : ($data[$puzzles[$i]] = "");
+    	}
+    	
+    	// for every criteria value, save as selected if selected 
+    	for ($i = 0; $i < count($criteria); $i++) {
+    		$request->input("criteria") === $criteria[$i] ? ($data[$criteria[$i]] = "selected") : ($data[$criteria[$i]] = "");
+    	}
+    	
+    	return $data;
     }
 }

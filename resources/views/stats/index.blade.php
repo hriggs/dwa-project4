@@ -13,6 +13,14 @@
 			    <form method="POST" action="/stats">
 					{!! csrf_field() !!}
 					<fieldset>
+						<label>See High Scores for:</label><br>
+							<select name="puzzle">
+								@foreach($puzzle_titles as $title)
+									<option value="{{ $title }}" {{ $data[$title] }}>{{ $title }}</option>
+								@endforeach
+							</select>
+					</fieldset>
+					<fieldset>
 						<label>Sort Stats by...</label><br>
 							<select name="stats">
 							 	<option value="first">First to Last Attempt</option>
