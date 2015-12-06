@@ -34,7 +34,7 @@ class ProfileController extends Controller {
     	
         // validate the request data
     	$this->validate($request, 
-    		["username" => "required|max:20",
+    		["username" => "required|max:20|unique:users,username,".$user->id,
     		 "name" => "required|max:255",
     		 "email" => "required|email|max:255|unique:users,email,".$user->id,
     		 "city" => "alpha|max:255",
