@@ -7,26 +7,26 @@
 @section('content')
 	<h2>High Scores - Top 20</h2>
 	<div class="sort">
-    <form method="POST" action="/high-scores">
-		{!! csrf_field() !!}
-		<fieldset>
-			<label>See High Scores for:</label><br>
-				<select name="puzzle">
-					@foreach($puzzle_titles as $title)
-						<option value="{{ $title }}" {{ $data[$title] }}>{{ $title }}</option>
-					@endforeach
-				</select>
-		</fieldset>
-		<fieldset>
-			<label>Sort by:</label><br>
-				<select name="criteria">
-				 	<option value="total_time" {{ $data["total_time"] }}>Fastest Time</option>
- 					<option value="moves" {{ $data["moves"] }}>Least Number of moves</option>
-				</select>
-		</fieldset>
-		<input type="submit" name="sort" class="btn submit" value="Sort">
-	</form>
-</div>
+	    <form method="POST" action="/high-scores">
+			{!! csrf_field() !!}
+			<fieldset>
+				<label>See High Scores for:</label><br>
+					<select name="puzzle">
+						@foreach($puzzle_titles as $title)
+							<option value="{{ $title }}" {{ $data[$title] }}>{{ $title }}</option>
+						@endforeach
+					</select>
+			</fieldset>
+			<fieldset>
+				<label>Sort by:</label><br>
+					<select name="criteria">
+					 	<option value="total_time" {{ $data["total_time"] }}>Fastest Time</option>
+	 					<option value="moves" {{ $data["moves"] }}>Least Number of moves</option>
+					</select>
+			</fieldset>
+			<input type="submit" name="sort" class="btn submit" value="Sort">
+		</form>
+	</div>
 	
 	@if(count($gamesessions) > 0)
 		<table>

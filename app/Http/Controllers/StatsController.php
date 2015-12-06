@@ -17,13 +17,13 @@ class StatsController extends Controller {
    /**
     * Responds to requests to GET /stats
     */
-    public function getIndex() {
+    public function getIndex(Request $request) {
     	
     	// get the current user 
     	$user = Auth::user();
     	
     	// get user's stats
-    	$stats = \App\Gamesession::with("puzzle")->orderBy("id", "ASC")->where("user_id", "=", $user->id)->get();
+    	$stats = \App\Gamesession::with("puzzle")->orderBy("id", "ASC")->where("user_id", "=", $user->id)->where("puzzle_id", "=", 1)->get();
     	
     	// get default user stats: fastest time for first puzzle
     	$gamesessions = \App\Gamesession::with("puzzle")->orderBy("id", "ASC")->where("user_id", "=", $user->id)->get();
@@ -33,7 +33,8 @@ class StatsController extends Controller {
     	
         return view("stats.index")->with(['stats'=>$stats, 
         								  'user'=>$user,
-        								  'puzzle_titles'=>$this->returnTitles($puzzles)]);
+        								  'puzzle_titles'=>$this->returnTitles($puzzles),
+        								  'data'=>$this->returnDropdownData($request)]);
     }
     
    /**
@@ -44,50 +45,56 @@ class StatsController extends Controller {
 	   	// get the current user 
 		$user = Auth::user();
 		
-		// store form data
-    	$puzzle_title = $request->puzzle;
-    	$sort_criteria = $request->criteria; 
-    	
-    	//echo $puzzle_title . " " . $sort_criteria;
+		// get list of created puzzles
+		$puzzles = \App\Puzzle::where("created", "=", "1")->get();
     	
     	// either sort or delete the data
     	if ($request->input("sort")) {
     		
-			// get list of created puzzles
-			$puzzles = \App\Puzzle::where("created", "=", "1")->get();
+	    	// store form data
+	    	$puzzle_title = $request->puzzle;
+	    	$sort_criteria = $request->criteria; 
 			
 			// get selected puzzle and its id
 			$puzzle = $puzzles->where("title", $puzzle_title)->first();
-			
 			$puzzle_id = $puzzle["id"];
+			
+			$stats; 
 
     		// sort based on form specifications
     		if ($request->criteria == "first") {
     			$stats = \App\Gamesession::with("puzzle")->orderBy("id", "ASC")->where("puzzle_id", "=", $puzzle_id)->where("user_id", "=", $user->id)->get();
-    			return view("stats.index")->with(['stats'=>$stats, 'user'=>$user,'puzzle_titles'=>$this->returnTitles($puzzles)]);
     		} elseif ($request->criteria == "last") {
     			$stats = \App\Gamesession::with("puzzle")->orderBy("id", "DESC")->where("puzzle_id", "=", $puzzle_id)->where("user_id", "=", $user->id)->get();
-    			return view("stats.index")->with(['stats'=>$stats, 'user'=>$user,'puzzle_titles'=>$this->returnTitles($puzzles)]);
     		} elseif ($request->criteria == "fast") {
     			$stats = \App\Gamesession::with("puzzle")->orderBy("total_time", "ASC")->where("puzzle_id", "=", $puzzle_id)->where("user_id", "=", $user->id)->get();
-    			return view("stats.index")->with(['stats'=>$stats, 'user'=>$user,'puzzle_titles'=>$this->returnTitles($puzzles)]);
     		} elseif ($request->criteria == "slow") {
     			$stats = \App\Gamesession::with("puzzle")->orderBy("total_time", "DESC")->where("puzzle_id", "=", $puzzle_id)->where("user_id", "=", $user->id)->get();
-    			return view("stats.index")->with(['stats'=>$stats, 'user'=>$user,'puzzle_titles'=>$this->returnTitles($puzzles)]);
     		} elseif ($request->criteria == "least") {
     			$stats = \App\Gamesession::with("puzzle")->orderBy("moves", "ASC")->where("puzzle_id", "=", $puzzle_id)->where("user_id", "=", $user->id)->get();
-    			return view("stats.index")->with(['stats'=>$stats, 'user'=>$user,'puzzle_titles'=>$this->returnTitles($puzzles)]);
     		} elseif ($request->criteria == "most") {
     			$stats = \App\Gamesession::with("puzzle")->orderBy("moves", "DESC")->where("puzzle_id", "=", $puzzle_id)->where("user_id", "=", $user->id)->get();
-    			return view("stats.index")->with(['stats'=>$stats, 'user'=>$user,'puzzle_titles'=>$this->returnTitles($puzzles)]);
     		}
+    		
+			return view("stats.index")->with(['stats'=>$stats, 
+											  'user'=>$user,
+											  'puzzle_titles'=>$this->returnTitles($puzzles),
+											  'data'=>$this->returnDropdownData($request)]);
+    		
     	} else if ($request->input("delete")) {
     		
+    		// store form data
+	    	$puzzle_title = $request->delete_stats;
+	    	
+	    	// get selected puzzle and its id
+			$puzzle = $puzzles->where("title", $puzzle_title)->first();
+			$puzzle_id = $puzzle["id"];
+	    	
     		// delete stats from pivot table
-    		$user->gamesessions()->detach();
+    		$user->gamesessions()->where("puzzle_id", "=", $puzzle_id)->detach();
 
 			// get stats from gamesessions table
-			$stats = \App\Gamesession::where("user_id", "=", $user->id)->get();
+			$stats = \App\Gamesession::where("user_id", "=", $user->id)->where("puzzle_id", "=", $puzzle_id)->get();
 			
 			// delete stats from gamesessions table
 			foreach($stats as $stat) {
@@ -95,7 +102,7 @@ class StatsController extends Controller {
 			}
     		
     		\Session::flash('flash_message','Your stats were deleted.');
-    		return redirect('/stats')->with('user', $user);
+    		return redirect('/stats')->with(['user'=>$user,'puzzle_titles'=>$this->returnTitles($puzzles)]);
     	}
     }
     
@@ -112,5 +119,31 @@ class StatsController extends Controller {
     	}
     	
     	return $puzzle_titles;
+    }
+    
+   /**
+    * Return an array which shows which dropdown values were selected
+    * 
+    *  @param $request request object
+    */
+    public function returnDropdownData(Request $request) {
+    	
+    	$data = [];
+    	
+    	// dropdown values	
+    	$puzzles = array("The Frog Puzzle", "Created");
+    	$criteria = array("first", "last", "fast", "slow", "least", "most");		  
+    	
+    	// for every puzzle value, save as selected if selected
+    	for ($i = 0; $i < count($puzzles); $i++) {
+    		$request->input("puzzle") === $puzzles[$i] ? ($data[$puzzles[$i]] = "selected") : ($data[$puzzles[$i]] = "");
+    	}
+    	
+    	// for every criteria value, save as selected if selected 
+    	for ($i = 0; $i < count($criteria); $i++) {
+    		$request->input("criteria") === $criteria[$i] ? ($data[$criteria[$i]] = "selected") : ($data[$criteria[$i]] = "");
+    	}
+    	
+    	return $data;
     }
 }
