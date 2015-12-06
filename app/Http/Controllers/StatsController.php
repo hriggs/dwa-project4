@@ -42,7 +42,8 @@ class StatsController extends Controller {
         								  'user'=>$user,
         								  'puzzle_titles'=>$this->returnTitles($puzzles),
         								  'data'=>$this->returnDropdownData($request),
-        								  'glance_stats' => $glance_stats]);
+        								  'glance_stats'=>$glance_stats,
+        								  'delete_data'=>$this->returnDeleteData($request)]);
     }
     
    /**
@@ -98,7 +99,8 @@ class StatsController extends Controller {
 											  'user'=>$user,
 											  'puzzle_titles'=>$this->returnTitles($puzzles),
 											  'data'=>$this->returnDropdownData($request),
-											  'glance_stats' => $glance_stats]);
+											  'glance_stats' => $glance_stats,
+        								  	  'delete_data'=>$this->returnDeleteData($request)]);
     		
     	} else if ($request->input("delete")) {
     		
@@ -133,7 +135,8 @@ class StatsController extends Controller {
     		\Session::flash('flash_message','Your stats were deleted.');
     		return redirect('/stats')->with(['user'=>$user,
     										 'puzzle_titles'=>$this->returnTitles($puzzles),
-    										 'glance_stats' => $glance_stats]);
+    										 'glance_stats' => $glance_stats,
+        								  	 'delete_data'=>$this->returnDeleteData($request)]);
     	}
     }
     
@@ -176,5 +179,27 @@ class StatsController extends Controller {
     	}
     	
     	return $data;
+    }
+    
+   /**
+    * Return an array which shows which delete dropdown values were selected
+    * 
+    *  @param $request request object
+    */
+    public function returnDeleteData(Request $request) {
+    	
+    	$delete_data = [];
+    	
+    	// dropdown values	
+    	$puzzles = array("The Frog Puzzle", "Created");
+    	
+    	// for every puzzle value, save as selected if selected
+    	for ($i = 0; $i < count($puzzles); $i++) {
+    		$request->input("delete_stats") === $puzzles[$i] ? ($delete_data[$puzzles[$i]] = "selected") : ($delete_data[$puzzles[$i]] = "");
+    	}
+    	
+    	dump($delete_data);
+    	
+    	return $delete_data;
     }
 }

@@ -47,7 +47,7 @@
 				<label>Delete stats for:</label><br>
 					<select name="delete_stats">
 						@foreach($puzzle_titles as $title)
-							<option value="{{ $title }}" {{ $data[$title] }}>{{ $title }}</option>
+							<option value="{{ $title }}" {{ old('delete_stats') == $title ? 'selected' : ''}}>{{ $title }}</option>
 						@endforeach
 					</select>
 			</fieldset>

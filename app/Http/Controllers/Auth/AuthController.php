@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request;
+use Auth;
 
 class AuthController extends Controller
 {
@@ -102,14 +103,58 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-	public function getRegister() {
-		return view("auth.register")->with('states', $this->getStates());
+	public function getRegister(Request $request) {
+		return view("auth.register")->with(['states'=>$this->returnStates(), 'data'=>$this->returnDropdownData($request)]);
 	}
 	
+	/**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function postRegister(Request $request)
+    {
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        Auth::login($this->create($request->all()));
+
+        return redirect($this->redirectPath())->with(['states'=>$this->returnStates(), 'data'=>$this->returnDropdownData($request)]);
+        //return view("auth.register")->with(['states'=>$this->returnStates(), 'data'=>$this->returnDropdownData($request)]);
+    }
+    
    /**
-    *
+    * Return an array which shows which dropdown values were selected
+    * 
+    *  @param $request request object
     */
-    public function getStates() {
+    public function returnDropdownData(Request $request) {
+    	
+    	$data = [];
+    	
+    	// dropdown values	
+    	$states = $this->returnStates();		  
+    	
+    	// for every puzzle value, save as selected if selected
+    	for ($i = 0; $i < count($states); $i++) {
+    		$request->input("state") == $states[$i] ? ($data[$states[$i]] = "selected") : ($data[$states[$i]] = "");
+    		
+    		//echo $states[$i] . "<br>";
+    	}
+    	
+    	return $data;
+    }
+	
+   /**
+    * Returns array of states.
+    */
+    public function returnStates() {
     	return file(storage_path() . "/app/text/states.txt", FILE_SKIP_EMPTY_LINES | FILE_IGNORE_NEW_LINES);
     }
 }

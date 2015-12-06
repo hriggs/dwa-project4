@@ -29,7 +29,10 @@ class PuzzlesTableSeeder extends Seeder
         	'title' => 'The Tower of Hanoi',
         	'creator' => 'Édouard Lucas',
         	'creation_date' => 1883,
-        	'description' => 'description here!',
+        	'description' => "The Tower of Hanoi (also called the Tower of Brahma or Lucas' Tower, 
+        					  and sometimes pluralized) is a mathematical game or puzzle. 
+        					  It consists of three rods, and a number of disks of different 
+        					  sizes which can slide onto any rod.",
         	'directions' => 'Directions here!',
         	'image_path' => 'image path here!',
         	'created' => false,
