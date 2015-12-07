@@ -1,4 +1,4 @@
-# DWA-15 P4: Final Project / GameLit
+# DWA-15 P4: Final Project / PuzzleLit
 
 ## Live URL
 <http://p4.hriggs.me>
@@ -12,9 +12,10 @@ Description to go here...
 
 ## Details for teaching team
 * Details to go here! 
-* All images/backgrounds/textures created using GIMP image editting software
+* All backgrounds, textures, puzzle piece images, and puzzle images created and/or editted using GIMP image editting software
 
 ## Outside code
 * Faker (user data) package: <https://github.com/fzaninotto/Faker>
 * Bootstrap: <http://getbootstrap.com/>
-* US state list code from <http://www.freeformatter.com/usa-state-list-html-select.html> (for speed sake)
+* Towers of Hanoi information and image: <https://en.wikipedia.org/wiki/Tower_of_Hanoi>
+* Cave image <https://commons.wikimedia.org/wiki/File:Gua_Tempurung.jpg>

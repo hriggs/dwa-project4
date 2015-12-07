@@ -54,7 +54,8 @@
 	    </table>
 	@else
 		<div class="page-link">
-			<p>There are no high scores for this puzzle yet! <a href="/register">Join</a> to get on the high score board!</p>
+			<p>There are no high scores for this puzzle yet!</p>
+			<p>If you've already <a href="/register">joined</a> then pick one of the <a href="/puzzles">puzzles</a> and start playing to get on the high score board!</p>
 		</div>
 	@endif
 @stop

@@ -13,7 +13,7 @@
 		{!! csrf_field() !!}
 		<fieldset>
 			<label>Username:*</label><br>
-			<p>Must be less than 20 characters</p>
+			<p><span class="form-details">Must be less than 20 characters</span></p>
 			<input type="text" name="username" class="form-box" value='{{ old('username') }}' maxlength="20" required>
 		</fieldset>
 		@if($errors->get('username'))
@@ -25,7 +25,7 @@
 		@endif
 		<fieldset>
 			<label>Password:*</label><br>
-			<p>Must be at least 6 characters</p>
+			<p><span class="form-details">Must be at least 6 characters</span></p>
 			<input type="password" name="password" class="form-box" maxlength="60" required>
 		</fieldset>
 		@if($errors->get('password'))

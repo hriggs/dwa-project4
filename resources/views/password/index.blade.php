@@ -11,7 +11,7 @@
 		{!! csrf_field() !!}
 		<fieldset>
 			<label>Password:*</label><br>
-			<p>Must be at least 6 characters</p>
+			<p><span class="form-details">Must be at least 6 characters</span></p>
 			<input type="password" name="password" class="form-box" maxlength="60" required>
 		</fieldset>
 		@if($errors->get('password'))

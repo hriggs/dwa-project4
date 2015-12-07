@@ -223,6 +223,10 @@ select, input {
 	font-size: 60%;
 }
 
+p .form-details {
+	font-size: 60%;
+}
+
 /* Stats page */
 table, th, td {
     border: 2px solid #333333;
@@ -276,6 +280,19 @@ p .stat-msg {
 
 .puzzle {
 	margin-bottom: 5em;
+}
+
+.puzzles h2 {
+	font-size: 500%;
+}
+
+.puzzles h3 {
+	font-weight: bold;
+	font-size: 200%;
+}
+
+.puzzles p {
+	margin-top: 1em;
 }
 
 p .header {

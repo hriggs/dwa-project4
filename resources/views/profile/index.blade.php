@@ -12,7 +12,7 @@
 		{!! csrf_field() !!}
 		<fieldset>
 			<label>Username:*</label><br>
-			<p>Must be less than 20 characters</p>
+			<p><span class="form-details">Must be less than 20 characters</span></p>
 			<input type="text" name="username" class="form-box" value='{{$user->username}}' maxlength="20" required>
 		</fieldset>
 		@if($errors->get('username'))
