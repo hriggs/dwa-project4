@@ -47,7 +47,7 @@
 				<label>Delete stats for:</label><br>
 					<select name="delete_stats">
 						@foreach($puzzle_titles as $title)
-							<option value="{{ $title }}" {{ old('delete_stats') == $title ? 'selected' : ''}}>{{ $title }}</option>
+							<option value="{{ $title }}" {{ $delete_data[$title] }}>{{ $title }}</option>
 						@endforeach
 					</select>
 			</fieldset>
@@ -57,7 +57,7 @@
 	<div class="clearfix"></div>
 	</div>
 	
-	@if(count($stats) > 0)
+	@if(isset($stats) && count($stats) > 0)
 		<table>
 			<tr>
 			    <th>Puzzle</th>
@@ -80,6 +80,9 @@
 	    </table>
 	@else
 		<div class="page-link">
+			@if(isset($delete_message)) 
+				<p><span class="stat-msg">{{$delete_message}}</span></p>
+			@endif
 			<p>You have no game stats for this game yet! <a href="/puzzles">Solve a puzzle</a> to get some stats...</p>
 		</div>
 	@endif

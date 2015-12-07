@@ -23,6 +23,7 @@ html, body {
 
 p {
 	font-size: 150%;
+	text-align: justify;
 }
 
 .page-link a {
@@ -263,6 +264,10 @@ th, td {
 	margin: 0 5%;
 }
 
+p .stat-msg {
+	font-size: 150%;
+}
+
 /* Puzzles List */
 .puzzles {
 	width: 60%;
@@ -271,4 +276,8 @@ th, td {
 
 .puzzle {
 	margin-bottom: 5em;
+}
+
+p .header {
+	font-weight: bold;
 }

@@ -131,12 +131,13 @@ class StatsController extends Controller {
 	    		"min_time" => $gamesessions->min("total_time"),   
 				"min_moves" => $gamesessions->min("moves"),
 	    	); 
-    		
-    		\Session::flash('flash_message','Your stats were deleted.');
-    		return redirect('/stats')->with(['user'=>$user,
-    										 'puzzle_titles'=>$this->returnTitles($puzzles),
-    										 'glance_stats' => $glance_stats,
-        								  	 'delete_data'=>$this->returnDeleteData($request)]);
+        								  	 
+			return view("stats.index")->with(['user'=>$user,
+											  'puzzle_titles'=>$this->returnTitles($puzzles),
+											  'data'=>$this->returnDropdownData($request),
+											  'glance_stats' => $glance_stats,
+        								  	  'delete_data'=>$this->returnDeleteData($request),
+        								  	  'delete_message'=>"Your stats for " . $puzzle["title"] . " were deleted."]);
     	}
     }
     
@@ -197,8 +198,6 @@ class StatsController extends Controller {
     	for ($i = 0; $i < count($puzzles); $i++) {
     		$request->input("delete_stats") === $puzzles[$i] ? ($delete_data[$puzzles[$i]] = "selected") : ($delete_data[$puzzles[$i]] = "");
     	}
-    	
-    	dump($delete_data);
     	
     	return $delete_data;
     }
