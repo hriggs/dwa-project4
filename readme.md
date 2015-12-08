@@ -10,7 +10,7 @@ Description to go here...
 <https://TBD.com>
 * Again, so sorry for the white noise in the background of the demo! 
 
-## Details for teaching team
+## Details for Teaching Team
 * Details to go here! 
 * All backgrounds, textures, puzzle piece images, and puzzle images created and/or editted using GIMP image editting software
 
