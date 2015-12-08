@@ -88,6 +88,8 @@ Route::controller("/change-password", "ChangePasswordController");
 
 Route::controller("/high-scores", "HighScoresController");
 
+Route::controller("/the-river-crossing-puzzle", "RiverCrossingController");
+
 Route::controller("/", "IndexController");
 
 

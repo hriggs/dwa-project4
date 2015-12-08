@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 
-class IndexController extends Controller {
+class RiverCrossingController extends Controller {
 	
   /**
 	* Construct function
@@ -12,7 +12,7 @@ class IndexController extends Controller {
     }
     
     /**
-    * Responds to requests to GET /
+    * Responds to requests to GET /the-river-crossing-puzzle
     */
     public function getIndex() {
     	

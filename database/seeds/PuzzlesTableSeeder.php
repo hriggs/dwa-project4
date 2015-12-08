@@ -14,11 +14,21 @@ class PuzzlesTableSeeder extends Seeder
     	DB::table('puzzles')->insert([
         	'created_at' => Carbon\Carbon::now()->toDateTimeString(),
         	'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-        	'title' => 'The Frog Puzzle',
-        	'creator' => 'Unknown',
-        	'creation_date' => "",
-        	'description' => 'description here!',
-        	'directions' => 'Directions here!',
+        	'title' => 'The River Crossing Puzzle',
+        	'creator' => 'Alcuin of York',
+        	'creation_date' => 0,
+        	'description' => 'A farmer must bring three items across 
+        					 the river (he must be on the raft to go 
+        					 across). The top item may not be left 
+        					 alone with the middle item and the middle 
+        					 item may not be left alone with the last. 
+        					 How can the farmer bring all the items 
+        					 across the river?',
+        	'directions' => 'The farmer may only take one item across at 
+        					a time. Click an item to move it onto/off the 
+        					raft. To win, all four characters must be on 
+        					the right bank. Customize your game with the 
+        					form on the game page.',
         	'image_path' => 'image path here!',
         	'created' => true,
     	]);
