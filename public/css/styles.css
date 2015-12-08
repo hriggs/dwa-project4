@@ -298,3 +298,15 @@ p .stat-msg {
 p .header {
 	font-weight: bold;
 }
+
+/* Puzzle Pages */
+#save-scores {
+	/*display: none;*/
+
+}
+
+#save-scores .btn {
+	width: 20%;
+	margin: 0 40% 1em 40%;
+	font-size: 130%;
+}

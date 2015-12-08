@@ -10,6 +10,14 @@
 
 @section('content')
 	<h2>The River Crossing Puzzle</h2>
+	@if(Auth::check())
+		<div id="save-scores">
+			<form method="POST" action="/the-river-crossing-puzzle">
+				{!! csrf_field() !!}
+				<input type="submit" name="game" class="btn btn-puzzle" value="Save Score!">
+			</form>
+		</div>
+	@endif
 	<div id="left">
 		<h3>Directions:</h3>
 		<p id="directions">A farmer must bring three items
@@ -19,6 +27,7 @@
 		<br>
 		<br>
 		The farmer may only take one item across at a time. Click an item to move it onto/off the raft.
+		Click on the "Cross River" button to send raft across the river.
 		To win, all four characters must be on the right bank.
 		<br>
 		<br>
@@ -28,7 +37,7 @@
 		<br>
 		<h3>Customize:</h3>
 		<form>
-			Play as:<span class="error" id="genderError"> Please select a gender.</span><br>
+			Play as:<br>
 			<input type="radio" name="gender" value="male" checked>Male
 			<br>
 			<input type="radio" name="gender" value="female">Female
@@ -82,9 +91,8 @@
 			<button id="crossBtn" type="button">Cross River</button>
 		</div>
 	</div>
-	<div id="right" class="extraSpace">
+	<div id="right">
 		<h3>Steps:</h3>
-		<br>
 		<ol id="steps">
 		</ol>
 	</div>

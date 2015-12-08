@@ -9,7 +9,42 @@
   */
   window.onload = function() {
   	
-  	// Creating and handling a data structure (JSON, custom objects, etc): 
+  	// variables with data to be passed to controller
+  	var data_array = [];
+  	var jsonString;
+  	var start_time;
+  	var end_time;
+  	var moves = 0; 
+  	
+  	// for testing purposes:
+  	/*data_array = ["start time", "end time", 10];
+  	jsonString = JSON.stringify(data_array);*/
+  	console.log(new Date().toJSON());
+  	
+  	function sendData(start, end, move_num) {
+		// CSRF protection
+		$.ajaxSetup(
+		{
+		    headers:
+		    {
+		        'X-CSRF-Token': $('input[name="_token"]').val()
+		    }
+		});
+		  	
+		 $.ajax({                    
+		  url: '/the-river-crossing-puzzle',     
+		  type: 'post', // performing a POST request
+		  data : {"start_time":start,"end_time":end,"moves":move_num},
+		  dataType: JSON,                 
+		  /*success: function(data)         
+		  {
+		    // etc...
+		  } */
+		});
+	}
+	
+	sendData("2015-12-08T22:54:01.876Z", "2015-12-08T22:56:11.876Z", 10);
+  	
   	// farmer constructor
   	function Farmer(gender) {
 		this.imgPath = "images/" + ((gender == "female") ? "girlFarmer.png" : "boyFarmer.png");  	
@@ -49,8 +84,6 @@
   
   /**
    * Start button listens for click events.
-   * 
-   * Capturing and handling events:
    */
   document.getElementById("startBtn").addEventListener("click", function(e) {
   	
@@ -58,6 +91,10 @@
   	if (raftMoving) {
   		startPressed = true;
   	}
+  	
+  	// set start time
+  	start_time = new Date().toJSON();
+  	console.log(start_time);
   	
   	// reset game 
   	gamePlayable = true;
@@ -102,25 +139,9 @@
 	bImg.src = bChar.imgPath;
 	cImg.src = cChar.imgPath;
   });
-	
-	/**
-	 * Check if either gender radio button clicked.
-	 * 
-	 * Form validation: 
-  	 */
-  	 document.forms[0].addEventListener("click", function(e) {
-  	 	
-  	 	// if gender selected, hide error message
-  	 	if (e.target.name == "gender") {
-  	 		document.getElementById("genderError").style.display = "none";
-  	 	}
-  	 });
 	  
   /**
    * Canvas element listens for click events.
-   * 
-   * Capturing and handling events:
-   * DOM element creation, deletion or modification: 
    */
 	document.getElementById("canvas").addEventListener("click", function(e) {
 		
@@ -176,7 +197,7 @@
    			// save passenger spot on raft
    			var passengerSpot = document.getElementById("passengerSpot");
    		
-				// if raft on left, character on left, character on bank
+			// if raft on left, character on left, character on bank
    			if (raftOnLeft && currentChar.onLeft && !currentChar.onRaft) { 
    		
    				// if no passenger on raft
@@ -258,6 +279,7 @@
    			raftOnLeft = true;
    			raftMoving = false;
    			startPressed = false;
+   			moves = 0;
    			return;
    		}
    		
@@ -271,6 +293,7 @@
    		
    		// if raft moving towards right
    		if (xPos <= cWidth - rWidth + bankDistance && raftOnLeft) {
+   			
    			// if raft has reached destination
    			if (xPos >= cWidth - rWidth - bankDistance) {
    				// reset object values
@@ -279,15 +302,19 @@
    				farmer.onLeft = false;
    				if (raftPassenger) {
    					raftPassenger.onLeft = false;
-  					}
-  					raftMoving = false;
+  				}
+  				
+  				raftMoving = false;
   					
-  					// write results to screen
-  					writeSteps();
-  					checkGameLost();
+  				// write results to screen
+  				writeSteps();
+  				checkGameLost();
+  				
+  				// increment moves
+  				moves++;
   					
-  					// stop moving
-  					return;
+  				// stop moving
+  				return;
    			}
    				setTimeout(move, 25);
    		// if raft moving towards left
@@ -300,15 +327,18 @@
    				farmer.onLeft = true;
    				if (raftPassenger) {
    					raftPassenger.onLeft = true;
-  					}
+  				}
   					
-  					// write results to screen
-  					raftMoving = false;
-  					writeSteps();
-  					checkGameLost();
+  				// write results to screen
+  				raftMoving = false;
+  				writeSteps();
+  				checkGameLost();
+  				
+  				// increment moves
+  				moves++;
   					
-  					// stop moving
-  					return;
+  				// stop moving
+  				return;
    			}
    				setTimeout(move, 25);
    		}
@@ -318,8 +348,6 @@
    /**
     * Checks if the condition is met for puzzle to be solved
     * (all characters on right bank) and writes text to screen if won.  
-    * 
-    * DOM element creation, deletion or modification:
     */
     function checkGameWon() {
     	if (!farmer.onLeft && !aChar.onLeft && !bChar.onLeft && !cChar.onLeft &&
@@ -327,14 +355,25 @@
     		// write "win" text to screen and stop player from playing until restarting again
     		endText.innerHTML = "You solved the puzzle!";
    			gamePlayable = false;
+   			
+   			// save game ending time
+   			end_time = new Date().toJSON();
+   			console.log(end_time);
+   			console.log(moves);
+   			
+   			// add all data needed in controller to array
+   			data_array = [start_time, end_time, moves];
+   			console.log(data_array);
+   			jsonString = JSON.stringify(data_array);
+   			
+   			// show save scores button
+   			document.getElementById("save-scores").style.display = "inline";
    		}
     }
    
    /**
     * Checks if any conditions are met for the game to end because player lost
     * (an animal eaten) and writes text to screen if lost.
-    * 
-    * DOM element creation, deletion or modification: 
     */
    function checkGameLost() {
    	
@@ -366,8 +405,6 @@
    
    /**
     * Writes the step just taken to the document.
-    * 
-    * DOM element creation, deletion or modification: 
     */
     function writeSteps() {
 

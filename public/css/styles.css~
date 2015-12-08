@@ -106,7 +106,7 @@ h3 {
 .or {
 	text-align: center;
 	color: #fae0bb;
-	margin: 1em 50% 1em 50%;
+	margin: 1em 50%;
 }
 
 .jigsaw {
@@ -297,4 +297,16 @@ p .stat-msg {
 
 p .header {
 	font-weight: bold;
+}
+
+/* Puzzle Pages */
+#save-scores {
+	/*display: none;*/
+
+}
+
+#save-scores .btn {
+	width: 20%;
+	margin: 0 40% 1em 40%;
+	font-size: 150%;
 }

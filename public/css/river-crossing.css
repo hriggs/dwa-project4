@@ -2,13 +2,6 @@
  * CSS for The River Crossing Puzzle
  */
 
-/*body {
-	background-color: #f7d397;
-	font-family: sans-serif;
-	color: #323a3d;
-	border: 10px solid #38979b;
-}*/
-
 /* Layout */
 #left {
 	float: left;
@@ -20,11 +13,9 @@
 }
 
 #center {
-	/*background-color: #013447;*/
 	float: left;
 	width: 700px;
 	height: 560px;
-	/*border: 5px solid #38979b;*/
 }
 
 #canvas {
@@ -37,7 +28,12 @@
 
 #right {
 	float: left;
-	margin-left: 20px;
+	margin-left: 25px;
+	font-size: 90%;
+}
+
+ol {
+ list-style-position: inside;
 }
 
 .extraSpace {
@@ -122,17 +118,6 @@
 /* Other */
 #directions {
 	font-size: 90%;
-}
-
-.error {
-	font-size: 60%;
-	color: #CF3E23;
-	font-weight: bold;
-	display: none;
-}
-
-footer a:hover {
-	color: #5cabb7;
 }
 
 /* Responsive Layout */
