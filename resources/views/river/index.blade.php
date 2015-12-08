@@ -29,10 +29,9 @@
 		<h3>Customize:</h3>
 		<form>
 			Play as:<span class="error" id="genderError"> Please select a gender.</span><br>
-			<input type="radio" name="gender" value="male">Male
+			<input type="radio" name="gender" value="male" checked>Male
 			<br>
 			<input type="radio" name="gender" value="female">Female
-			<br>
 			<br>
 			Theme:<br>
 			<select id="select">
@@ -41,7 +40,6 @@
 				<option>Wolf/Sheep/Cabbage</option>
 				<option>Fox/Goose/Beans</option>
 			</select>
-			<br>
 			<br>
 			<button id="startBtn" type="button">Restart</button>
 		</form>

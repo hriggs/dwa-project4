@@ -59,11 +59,6 @@
   		startPressed = true;
   	}
   	
-  	// if form is not completed, do not allow game to start
-  	if (!validateForm()) {
-  		return;
-  	}
-  	
   	// reset game 
   	gamePlayable = true;
   	raftPassenger = null;
@@ -107,33 +102,6 @@
 	bImg.src = bChar.imgPath;
 	cImg.src = cChar.imgPath;
   });
-  
-  /**
-   * Validates the form the player fills out in order to play the game. 
-   * 
-   * Form validation: 
-   */
-	function validateForm() {
-		var genderError = document.getElementById("genderError");
-		
-		var pattern = /^[a-z0-9 ]+$/i;
-		var errors = false;
-		
-		// if neither gender radio button selected
-		if (document.querySelector('input[name="gender"]:checked') == null) {
-			genderError.style.display = "inline";
-			errors = true;
-		} 
-		
-		// if errors found
-		if (errors) {
-			return false;
-		}
-		
-		// form filled in correctly
-		genderError.style.display = "none";
-		return true;
-	}
 	
 	/**
 	 * Check if either gender radio button clicked.
