@@ -7,6 +7,8 @@
 @section('content')
 	<div class="puzzles">
 		<h2>Play Now!</h2>
+		<p>You must be logged in for your scores to be recorded.</p>
+		<br>
 		@foreach($created_puzzles as $puzzle)
 	        <div class="puzzle">
 	            <h3>{{ $puzzle->title }}</h3>
