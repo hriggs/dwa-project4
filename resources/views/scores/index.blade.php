@@ -34,8 +34,8 @@
 				<th>Ranking</th>
 			    <th>User</th>
 	    		<th>Puzzle</th>		
-	    		<th>{{ $headers[0] }}</th>
-	    		<th>{{ $headers[1] }}</th>
+	    		<th>{{ $headers[0] }} {{ $headers[0] == "Time" ? "in Minutes" : ""}}</th>
+	    		<th>{{ $headers[1] }} {{ $headers[1] == "Time" ? "in Minutes" : ""}}</th>
 			</tr>
 			@foreach($gamesessions as $session)
 		    	<tr>
