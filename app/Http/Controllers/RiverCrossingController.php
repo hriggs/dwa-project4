@@ -61,7 +61,27 @@ class RiverCrossingController extends Controller {
 		$interval  = abs($datetime2 - $datetime1);
 		$total_time   = round($interval / 60);
 		//echo 'Diff. in minutes is: '.$total_time; 
+		
+		// get current user
+    	//$user = Auth::user();
     	
+    	// enter gamesession into database
+    	$gamesession = new \App\Gamesession();
+    	$gamesession->user_id = \Auth::id();
+    	$gamesession->puzzle_id = 1; // get real one based on query
+    	$gamesession->attempt_num = 500; // get real one based on query
+    	$gamesession->start_time = $start_time;
+    	$gamesession->end_time = $end_time;
+    	$gamesession->total_time = $total_time;
+    	$gamesession->moves = $data["moves"];
+    	
+    	$gamesession->save();
+    	
+    	$user = array(\Auth::id());
+    	
+    	$gamesession->users()->sync($user);
+    	
+    	// actually return same view or return nothing?
         return " POST!";
     }
 }

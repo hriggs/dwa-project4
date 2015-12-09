@@ -34,7 +34,7 @@
 		 $.ajax({                    
 		  url: '/the-river-crossing-puzzle',     
 		  type: 'post', // performing a POST request
-		  data : {"start_time":start,"end_time":end,"moves":move_num},
+		  data : {"start_time":start,"end_time":end,"moves":move_num,"title":"The River Crossing Puzzle"},
 		  dataType: JSON,                 
 		  /*success: function(data)         
 		  {
