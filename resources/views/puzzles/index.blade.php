@@ -15,7 +15,7 @@
 				<p><span class="header">Creator:</span><br>{{ $puzzle->creator }}</p>
 				<p><span class="header">Creation Date:</span><br>{{ $puzzle->creation_date == 0 ? "Unknown" : $puzzle->creation_date }}</p>
 				<p><span class="header">How to Play:</span><br>{{ $puzzle->directions }}</p>
-				<a class="btn btn-puzzle" href="/">Play {{ $puzzle->title }}</a>
+				<a class="btn btn-puzzle" href="{{ $links[$puzzle->title] }}">Play {{ $puzzle->title }}</a>
 	        </div>
 	    @endforeach
 	    

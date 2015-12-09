@@ -29,7 +29,7 @@ class PuzzlesTableSeeder extends Seeder
         					raft. To win, all four characters must be on 
         					the right bank. Customize your game with the 
         					form on the game page.',
-        	'image_path' => 'image path here!',
+        	'image_path' => '/images/river_crossing.png',
         	'created' => true,
     	]);
     	
