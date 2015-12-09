@@ -16,6 +16,6 @@ class IndexController extends Controller {
     */
     public function getIndex() {
     	
-        return view("river.index");
+        return view("index.index");
     }
 }
