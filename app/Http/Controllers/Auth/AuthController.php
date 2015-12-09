@@ -106,28 +106,6 @@ class AuthController extends Controller
 	public function getRegister(Request $request) {
 		return view("auth.register")->with(['states'=>$this->returnStates(), 'data'=>$this->returnDropdownData($request)]);
 	}
-	
-	/**
-     * Handle a registration request for the application.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function postRegister(Request $request)
-    {
-        $validator = $this->validator($request->all());
-
-        if ($validator->fails()) {
-            $this->throwValidationException(
-                $request, $validator
-            );
-        }
-
-        Auth::login($this->create($request->all()));
-
-        return redirect($this->redirectPath())->with(['states'=>$this->returnStates(), 'data'=>$this->returnDropdownData($request)]);
-        //return view("auth.register")->with(['states'=>$this->returnStates(), 'data'=>$this->returnDropdownData($request)]);
-    }
     
    /**
     * Return an array which shows which dropdown values were selected
@@ -144,8 +122,6 @@ class AuthController extends Controller
     	// for every puzzle value, save as selected if selected
     	for ($i = 0; $i < count($states); $i++) {
     		$request->input("state") == $states[$i] ? ($data[$states[$i]] = "selected") : ($data[$states[$i]] = "");
-    		
-    		//echo $states[$i] . "<br>";
     	}
     	
     	return $data;

@@ -83,7 +83,7 @@
 			<label>State:</label><br>
 				<select name="state">
 					@foreach($states as $state)
- 						<option value="{{ $state }}" {{ $data[$state] }}>{{ $state }}</option>
+ 						<option value="{{ $state }}" {{ old('state') == $state ? "selected" : ''}}>{{ $state }}</option>
 					@endforeach	
 				</select>
 		</fieldset>
