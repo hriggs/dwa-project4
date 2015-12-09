@@ -20,9 +20,11 @@ Description to go here...
 * Bootstrap: <http://getbootstrap.com/>
 * Carbon PHP extension: <http://carbon.nesbot.com/>
 
-### Puzzles Page Images
-* Towers of Hanoi information and image: <https://en.wikipedia.org/wiki/Tower_of_Hanoi>
-* Cave image <https://commons.wikimedia.org/wiki/File:Gua_Tempurung.jpg>
+### List of Puzzles Page
+* The River Crossing Puzzle <https://commons.wikimedia.org/wiki/File:River_rafting.JPG>
+* The Endangered Miners <https://commons.wikimedia.org/wiki/File:Gua_Tempurung.jpg>
+* Fear of the Stew Pot <https://commons.wikimedia.org/wiki/File:Jungle_forest_from_above.jpg>
+* The Tower of Hanoi information and image: <https://en.wikipedia.org/wiki/Tower_of_Hanoi>
 
 ### River Crossing Puzzle Images
 * <http://www.freepik.com/free-photos-vectors/river>

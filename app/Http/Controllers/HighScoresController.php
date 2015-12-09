@@ -132,7 +132,7 @@ class HighScoresController extends Controller {
     	$data = [];
     	
     	// dropdown values	
-    	$puzzles = array("The River Crossing Puzzle", "Created");
+    	$puzzles = array("The River Crossing Puzzle", "The Endangered Miners");
     	$criteria = array("total_time","moves");		  
     	
     	// for every puzzle value, save as selected if selected

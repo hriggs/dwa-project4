@@ -36,6 +36,31 @@ class PuzzlesTableSeeder extends Seeder
     	DB::table('puzzles')->insert([
         	'created_at' => Carbon\Carbon::now()->toDateTimeString(),
         	'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+        	'title' => 'Fear of the Stew Pot',
+        	'creator' => 'Alcuin of York',
+        	'creation_date' => 0,
+        	'description' => 'Three anthropologists want to cross a river in a distant land and ask
+							 three nearby, clearly hungry, villagers for aid, offering them a nice 
+							 dinner in return for their help. The three villagers agree readily, note 
+							 in passing that they are cannibals (perhaps they are just making fun of
+							 the anthropologists, who knows?), and say that they would be delighted
+							 to have the anthropologists for dinner. The villagers lead the alarmed
+							 anthropologists to a canoe that can carry at most two people across the
+							 river at a time. The anthropologists are, naturally, wary, and will not
+							 allow there to be more villagers on either bank of the river than there
+							 are anthropologists on that bank. (If the villagers outnumber the 
+							 anthropologists on either bank, the anthropologists fear that the villagers
+							 might have an early dinner.) How can the anthropologists get across the
+							 river without discovering anything more about the villager’s diet?',
+        	'directions' => 'Click on a villager or anthropologist to move them on or off the raft, 
+        					and then click the "Cross River" button to move the raft across the river.',
+        	'image_path' => '/images/stew_pot.jpg',
+        	'created' => false,
+    	]);
+    	
+    	DB::table('puzzles')->insert([
+        	'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+        	'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
         	'title' => 'The Tower of Hanoi',
         	'creator' => 'Édouard Lucas',
         	'creation_date' => 1883,
@@ -57,7 +82,7 @@ class PuzzlesTableSeeder extends Seeder
     	DB::table('puzzles')->insert([
         	'created_at' => Carbon\Carbon::now()->toDateTimeString(),
         	'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-        	'title' => 'Miners and Minutes',
+        	'title' => 'The Endangered Miners',
         	'creator' => 'Richard Hovasse',
         	'creation_date' => 1981,
         	'description' => 'Four miners have just been trapped in a mine cavern 
@@ -76,18 +101,6 @@ class PuzzlesTableSeeder extends Seeder
 							while Edward is more seriously injured and can only get
 							through in eight minutes. How can they escape in time?',
         	'image_path' => '/images/miners.jpeg',
-        	'created' => false,
-    	]);
-    	
-    	DB::table('puzzles')->insert([
-        	'created_at' => Carbon\Carbon::now()->toDateTimeString(),
-        	'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-        	'title' => 'Created',
-        	'creator' => 'Édouard Lucas',
-        	'creation_date' => 1883,
-        	'description' => 'description here!',
-        	'directions' => 'Directions here!',
-        	'image_path' => 'image path here!',
         	'created' => true,
     	]);
     }

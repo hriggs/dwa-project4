@@ -12,7 +12,7 @@
 		@foreach($created_puzzles as $puzzle)
 	        <div class="puzzle">
 	            <h3>{{ $puzzle->title }}</h3>
-				<img src="{{ $puzzle->image_path }}" alt="Puzzle image. " >
+				<img src="{{ $puzzle->image_path }}" alt="Puzzle image. " class="img-thumbnail img-responsive">
 				<p><span class="header">What it is:</span><br>{{ $puzzle->description }}</p>
 				<p><span class="header">Creator:</span><br>{{ $puzzle->creator }}</p>
 				<p><span class="header">Creation Date:</span><br>{{ $puzzle->creation_date == 0 ? "Unknown" : $puzzle->creation_date }}</p>
