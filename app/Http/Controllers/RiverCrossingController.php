@@ -41,44 +41,33 @@ class RiverCrossingController extends Controller {
  		$start_time = substr($start_time, 0, 19);
  		$end_time = substr($end_time, 0, 19);
  		
- 		// save start and end times in ways they can be manipulated with carbon
- 		//$start_carbon = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $start_time)->toDateTimeString();
- 		//$end_carbon = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $end_time)->toDateTimeString();
- 		
- 		//\Carbon\Carbon::create($year, $month, $day, $hour, $minute, $second);
- 		
- 		/*$datetime1 = date_create($start_time);
- 		$datetime2 = date_create($end_time);
- 		
- 		//echo $datetime1->format('Y-m-d H:i:s');
- 		
- 		$interval = $datetime1->diff($datetime2);*/
- 		
- 		//echo $interval->format('%i');
- 		
+ 		// find total time spent on game in minutes
  		$datetime1 = strtotime($start_time);
 		$datetime2 = strtotime($end_time);
-		$interval  = abs($datetime2 - $datetime1);
-		$total_time   = round($interval / 60);
-		//echo 'Diff. in minutes is: '.$total_time; 
+		$difference = abs($datetime2 - $datetime1);
+		$total_time = round($difference / 60, 2);
 		
-		// get current user
-    	//$user = Auth::user();
+		// get puzzle id
+		$puzzle = \App\Puzzle::where("title", "=", "The River Crossing Puzzle")->first();
+		$puzzle_id = $puzzle["id"];
+
+		// get and set last attempt for this puzzle
+		$last_attempt = \App\Gamesession::where("user_id", "=", \Auth::id())->max("attempt_num");
+		$last_attempt++;
     	
     	// enter gamesession into database
     	$gamesession = new \App\Gamesession();
     	$gamesession->user_id = \Auth::id();
-    	$gamesession->puzzle_id = 1; // get real one based on query
-    	$gamesession->attempt_num = 500; // get real one based on query
+    	$gamesession->puzzle_id = $puzzle_id;
+    	$gamesession->attempt_num = $last_attempt;
     	$gamesession->start_time = $start_time;
     	$gamesession->end_time = $end_time;
     	$gamesession->total_time = $total_time;
     	$gamesession->moves = $data["moves"];
-    	
     	$gamesession->save();
     	
+    	// save data in gamesession_user
     	$user = array(\Auth::id());
-    	
     	$gamesession->users()->sync($user);
     	
     	// actually return same view or return nothing?

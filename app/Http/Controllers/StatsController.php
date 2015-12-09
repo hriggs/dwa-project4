@@ -166,7 +166,7 @@ class StatsController extends Controller {
     	$data = [];
     	
     	// dropdown values	
-    	$puzzles = array("The Frog Puzzle", "Created");
+    	$puzzles = array("The River Crossing Puzzle", "Created");
     	$criteria = array("first", "last", "fast", "slow", "least", "most");		  
     	
     	// for every puzzle value, save as selected if selected
@@ -192,7 +192,7 @@ class StatsController extends Controller {
     	$delete_data = [];
     	
     	// dropdown values	
-    	$puzzles = array("The Frog Puzzle", "Created");
+    	$puzzles = array("The River Crossing Puzzle", "Created");
     	
     	// for every puzzle value, save as selected if selected
     	for ($i = 0; $i < count($puzzles); $i++) {

@@ -10,14 +10,6 @@
 
 @section('content')
 	<h2>The River Crossing Puzzle</h2>
-	@if(Auth::check())
-		<div id="save-scores">
-			<form method="POST" action="/the-river-crossing-puzzle">
-				{!! csrf_field() !!}
-				<input type="submit" name="game" class="btn btn-puzzle" value="Save Score!">
-			</form>
-		</div>
-	@endif
 	<div id="left">
 		<h3>Directions:</h3>
 		<p id="directions">A farmer must bring three items
@@ -37,6 +29,7 @@
 		<br>
 		<h3>Customize:</h3>
 		<form>
+			{!! csrf_field() !!}
 			Play as:<br>
 			<input type="radio" name="gender" value="male" checked>Male
 			<br>

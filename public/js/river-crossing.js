@@ -10,17 +10,13 @@
   window.onload = function() {
   	
   	// variables with data to be passed to controller
-  	var data_array = [];
-  	var jsonString;
-  	var start_time;
-  	var end_time;
+  	var start_time = "";
+  	var end_time = "";
   	var moves = 0; 
   	
-  	// for testing purposes:
-  	/*data_array = ["start time", "end time", 10];
-  	jsonString = JSON.stringify(data_array);*/
-  	console.log(new Date().toJSON());
-  	
+   /**
+  	* Send AJAX data via POST with start time, end time, and number of moves. 
+  	*/
   	function sendData(start, end, move_num) {
 		// CSRF protection
 		$.ajaxSetup(
@@ -31,19 +27,13 @@
 		    }
 		});
 		  	
-		 $.ajax({                    
-		  url: '/the-river-crossing-puzzle',     
-		  type: 'post', // performing a POST request
-		  data : {"start_time":start,"end_time":end,"moves":move_num,"title":"The River Crossing Puzzle"},
-		  dataType: JSON,                 
-		  /*success: function(data)         
-		  {
-		    // etc...
-		  } */
-		});
+		$.ajax({                    
+			url: '/the-river-crossing-puzzle',     
+			type: 'post', // performing a POST request
+			data : {"start_time":start,"end_time":end,"moves":move_num,"title":"The River Crossing Puzzle"},
+			dataType: JSON,                 
+	    });
 	}
-	
-	sendData("2015-12-08T22:54:01.876Z", "2015-12-08T22:56:11.876Z", 10);
   	
   	// farmer constructor
   	function Farmer(gender) {
@@ -94,7 +84,6 @@
   	
   	// set start time
   	start_time = new Date().toJSON();
-  	console.log(start_time);
   	
   	// reset game 
   	gamePlayable = true;
@@ -356,18 +345,11 @@
     		endText.innerHTML = "You solved the puzzle!";
    			gamePlayable = false;
    			
-   			// save game ending time
+   			// save puzzle end time
    			end_time = new Date().toJSON();
-   			console.log(end_time);
-   			console.log(moves);
    			
-   			// add all data needed in controller to array
-   			data_array = [start_time, end_time, moves];
-   			console.log(data_array);
-   			jsonString = JSON.stringify(data_array);
-   			
-   			// show save scores button
-   			document.getElementById("save-scores").style.display = "inline";
+   			// send data via AJAX
+   			sendData(start_time, end_time, moves);
    		}
     }
    
