@@ -12,7 +12,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-    	// credentials for instructor/TA login
+    	// credentials for teaching staff login
 	   	$user = \App\User::firstOrCreate(['email' => 'jill@harvard.edu']);
 	   	$user->username = 'jill123';
 	    $user->name = 'Jill';
@@ -39,7 +39,7 @@ class UsersTableSeeder extends Seeder
 		$faker = Faker::create();
 		
 		// generate random user data
-		for($i = 0; $i < 100; $i++) {
+		for($i = 0; $i < 50; $i++) {
 			
 			$email = $faker->email;
 			

@@ -18,6 +18,7 @@ Description to go here...
 ### Packages
 * Faker (user data) package: <https://github.com/fzaninotto/Faker>
 * Bootstrap: <http://getbootstrap.com/>
+* Carbon PHP extension: <http://carbon.nesbot.com/>
 
 ### Puzzles Page Images
 * Towers of Hanoi information and image: <https://en.wikipedia.org/wiki/Tower_of_Hanoi>
