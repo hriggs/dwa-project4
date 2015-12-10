@@ -11,22 +11,6 @@
 |
 */
 
-Route::get('/confirm', function() {
-
-    # You may access the authenticated user via the Auth facade
-    $user = Auth::user();
-
-    if($user) {
-        echo 'You are logged in.';
-        dump($user->toArray());
-    } else {
-        echo 'You are not logged in.';
-    }
-
-    return;
-
-});
-
 Route::get('/debug', function() {
 
     echo '<pre>';
@@ -90,6 +74,8 @@ Route::controller("/high-scores", "HighScoresController");
 
 Route::controller("/the-river-crossing-puzzle", "RiverCrossingController");
 
+Route::controller("/the-endangered-miners", "MinersController");
+
 Route::controller("/", "IndexController");
 
 
@@ -106,5 +92,3 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/change-password', 'ChangePasswordController@getIndex');
     Route::post('/change-password', 'ChangePasswordController@postIndex');
 });
-
-

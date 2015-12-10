@@ -1,0 +1,156 @@
+/**
+ * CSS for The River Crossing Puzzle
+ */
+
+/* Layout */
+#left {
+	float: left;
+	width: 20%;
+}
+
+#left p {
+	text-align: justify;
+}
+
+#center {
+	float: left;
+	width: 700px;
+	height: 560px;
+}
+
+#canvas {
+	width: 700px;
+	height: 500px;
+	float: left;
+	background-color: #38979b;
+	background-image: url("../images/river.png");
+}
+
+#right {
+	float: left;
+	margin-left: 25px;
+	font-size: 90%;
+}
+
+ol {
+	list-style-position: inside;
+}
+
+.extraSpace {
+	padding: 20px; 
+}
+
+#playerMsg {
+	text-align: center;
+	font-weight: bold;
+	font-size: 120%;
+	color: #f1e5cd;
+}
+
+/* Components */
+#charsInit {
+	width: 100px;
+	height: 100px;
+	float: left;
+}
+
+#raft {
+	background-color: #744c29;
+	background-image: url("../images/raft.png");
+	width: 200px;
+	height: 200px;
+	position: relative; 
+	margin-top: 50px;
+	float: left;
+	box-shadow: 3px 3px 5px #013447;
+}
+
+#farmerInit {
+	width: 100px; 
+	height: 100px;
+}
+
+.character, #farmerSpot, #passengerSpot {
+	width: 100px;
+	height: 100px;
+}
+
+#farmerSpot, #passengerSpot {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#rightBank {
+	width: 100px;
+	height: 100px;
+	float: left;
+	left: 300px;
+	position: relative;
+}
+
+#endText {
+	font-weight: bold;
+	font-size: 250%;
+	text-align: center;
+	position: relative;
+	height: 100px;
+}
+
+/* Buttons */
+#startBtn, #crossBtn {
+	padding: 10px;
+	background-color: #744c29;
+	border-radius: 50%;
+	color: #f1e5cd;
+	border: 5px solid #815a3b;
+	font-weight: bold;
+}
+
+#startBtn:hover, #crossBtn:hover {
+	color: #c39c7c;
+}
+
+#crossBtn {
+	width: 30%;
+	margin: 5px 40%;
+}
+
+/* Other */
+.directions {
+	font-size: 90%;
+}
+
+.directions ol li {
+	font-weight: bold;
+}
+
+/* Responsive Layout */
+@media (max-width: 1210px) {
+	#left {
+		width: 100%;
+	}
+	
+	#right {
+		width: 100%;
+	}
+	
+	#canvas {
+		float: none;
+	}
+	
+	#center {
+		margin-left: 15%;
+	}
+}
+
+@media (max-width: 780px) {
+	#canvas {
+		float: left;
+	}
+	
+	#center {
+		margin-left: 0;
+		margin-right: 0;
+		float: left;
+	}
+}
