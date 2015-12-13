@@ -374,7 +374,7 @@
   					
   				// write results to screen
   				writeTime();
-  				//writeSteps();
+  				writeSteps();
   				checkGameLost();
   				
   				// increment moves
@@ -403,7 +403,7 @@
   					
   				// write results to screen
   				writeTime();
-  				//writeSteps();
+  				writeSteps();
   				checkGameLost();
   				
   				// increment moves
@@ -503,12 +503,30 @@
 
     	var stepText = "";
     	
-    	// if farmer returned from right side
-    	if (farmer.onLeft) {
-    		stepText = "Return" + ((raftPassenger) ? " with " + raftPassenger.charName : " alone");
-    	// if passenger going to left side
+    	// if passenger in aSpot
+    	if (aPassenger) {
+    		
+    		// if on left side
+    		if (aPassenger.onLeft) {
+    			
+    			stepText = aPassenger.charName + ((bPassenger) ? " & " + bPassenger.charName + " return" : " returns"); 
+    			
+    		// if on right side
+    		} else {
+    			stepText = aPassenger.charName + ((bPassenger) ? " & " + bPassenger.charName + " cross" : " crosses"); 
+    		}
+    	
+    	// passenger in bSpot, but not aSpot
     	} else {
-    		stepText = ((raftPassenger) ? "Take " + raftPassenger.charName + " over": "Cross alone"); 
+    		
+    		// if on left side
+    		if (bPassenger.onLeft) {
+    			stepText = bPassenger.charName + " returns";
+    			
+    		// if on right side
+    		} else {
+    			stepText = bPassenger.charName + " crosses";
+    		}
     	}
     	
     	// add list item with text to document
