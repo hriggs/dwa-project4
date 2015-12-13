@@ -102,23 +102,6 @@
   	cChar = new Miner("Fiona", 4);
   	dChar = new Miner("Edward", 8);
   	
-  	// create farmer object
-  	//farmer = new Farmer(document.querySelector('input[name="gender"]:checked').value);
-  	
-  	// draw farmer on left bank
-  	//document.getElementById("farmerLeft").appendChild(document.getElementById("farmerImg"));
-  	//farmerImg.src = farmer.imgPath;
-  	
-	// store chosen theme details
-  	/*var select = document.getElementById("select");
-  	var themeNum = select.selectedIndex;
-  	var theme = select.options[select.selectedIndex].value.split("/");
-  	
-  	// create character objects
-  	aChar = new Character(theme[0], 1, themeNum); 
-  	bChar = new Character(theme[1], 2, themeNum); 
-  	cChar = new Character(theme[2], 3, themeNum);*/ 
-  	
   	// store image elements
   	var aImg = document.getElementById("aImg");
   	var bImg = document.getElementById("bImg");
@@ -146,36 +129,7 @@
 		// if game has been (re)started and raft not moving
 		if (gamePlayable && !raftMoving) {
   		
-  			// if farmer image clicked
-  			/*if (e.target == document.getElementById("farmerImg")) {
-  			
-  				// save farmer's spot on raft
-  				var farmerSpot = document.getElementById("farmerSpot");
-  			
-  				// if raft on left, farmer on left, farmer on bank
-  				if (raftOnLeft && farmer.onLeft && !farmer.onRaft) {
-  					// put farmer on raft
-  					farmerSpot.appendChild(e.target);
-  					farmer.onRaft = true;
-  				// if raft on left, farmer on left, farmer on raft
-  				} else if (raftOnLeft && farmer.onLeft && farmer.onRaft) {
-  					// put farmer on left bank
-  					document.getElementById("farmerLeft").appendChild(e.target);
-  					farmer.onRaft = false;
-  				// if raft on right, farmer on right, farmer on bank
-  				} else if (!raftOnLeft && !farmer.onLeft &&!farmer.onRaft) {
-  					// put farmer on raft
-  					farmerSpot.appendChild(e.target);
-  					farmer.onRaft = true;
-  				// if raft on right, farmer on right, farmer on raft
-  				} else if (!raftOnLeft && !farmer.onLeft && farmer.onRaft) {
-  					// put farmer on right bank
-  					document.getElementById("farmerRight").appendChild(e.target);
-  					farmer.onRaft = false;
-  					checkGameWon();
-  				}
-  			// if miner clicked
-   		} else*/ if (e.target == document.getElementById("aImg") || 
+			if (e.target == document.getElementById("aImg") || 
    					  e.target == document.getElementById("bImg") || 
    					  e.target == document.getElementById("cImg") ||
    					  e.target == document.getElementById("dImg")) {
@@ -218,15 +172,6 @@
    					currentChar.onRaft = true;
    					bPassenger = currentChar;
    				}
-   		
-   				// if no passenger on raft
-   				/*if (passengerSpot.innerHTML == "") {
-   				
-   					// put passenger on raft
-   					passengerSpot.appendChild(e.target);
-   					currentChar.onRaft = true;
-   					raftPassenger = currentChar;
-   				}*/
    			// if raft on left, character on left, character on raft
    			} else if (raftOnLeft && currentChar.onLeft && currentChar.onRaft) {
    			
@@ -243,7 +188,6 @@
    				if (bSpot.innerHTML == "") {
    					bPassenger = null;
    				}
-   				//raftPassenger = null;
    			}
    			// if raft on right, character on right, character on bank
    			else if (!raftOnLeft && !currentChar.onLeft && !currentChar.onRaft) {
@@ -264,15 +208,6 @@
    					currentChar.onRaft = true;
    					bPassenger = currentChar;
    				}
-   			
-   				// if no passenger on raft
-   				/*if (passengerSpot.innerHTML == "") {
-   				
-   					// put passenger on raft
-   					passengerSpot.appendChild(e.target);
-   					currentChar.onRaft = true;
-   					raftPassenger = currentChar;
-   				}*/
    			}
    			// if raft on right, character on right, character on raft
    			else if (!raftOnLeft && !currentChar.onLeft && currentChar.onRaft) {
@@ -293,12 +228,6 @@
    				
    				// check if game won
    				checkGameWon();
-   			
-   				// put passenger on right bank
-   				/*document.getElementById(idChar + "Right").appendChild(e.target);
-   				currentChar.onRaft = false;
-   				raftPassenger = null;
-   				checkGameWon();*/
    			}
    		}
   	 }
