@@ -69,8 +69,8 @@
   // store important objects
   //var farmer;
   var aChar, bChar, cChar, dChar;
-  var aPassenger;
-  var bPassenger;
+  var aPassenger = null;
+  var bPassenger = null;
   
   // text divs
   var endText = document.getElementById("endText");
@@ -206,8 +206,6 @@
    			} else {
    				currentChar = dChar;
    			}
-   			
-   			console.log(idChar);
    		
    			// access a and b spots on raft
    			var aSpot = document.getElementById("aSpot");
@@ -252,38 +250,69 @@
    				
    				// if miner removed from aSpot
    				if (aSpot.innerHTML == "") {
-   					
-   					console.log("miner removed from a spot");
    					aPassenger = null;
-   					
-   				// if a miner on aSpot and no miner on bSpot
-   				} else if (bSpot.innerHTML == "") {
-   					
-   					console.log("miner removed from b spot");
+   				}
+   				
+   				// if a miner removed from bSpot
+   				if (bSpot.innerHTML == "") {
    					bPassenger = null;
    				}
    				//raftPassenger = null;
    			}
    			// if raft on right, character on right, character on bank
    			else if (!raftOnLeft && !currentChar.onLeft && !currentChar.onRaft) {
+   				
+   				// if no miner on aSpot
+   				if (aSpot.innerHTML == "") {
+   					
+   					// put miner on raft on aSpot
+   					aSpot.appendChild(e.target);
+   					currentChar.onRaft = true;
+   					aPassenger = currentChar;
+   					
+   				// if a miner on aSpot and no miner on bSpot
+   				} else if (bSpot.innerHTML == "") {
+
+   					// put miner on bSpot
+   					bSpot.appendChild(e.target);
+   					currentChar.onRaft = true;
+   					bPassenger = currentChar;
+   				}
    			
    				// if no passenger on raft
-   				if (passengerSpot.innerHTML == "") {
+   				/*if (passengerSpot.innerHTML == "") {
    				
    					// put passenger on raft
    					passengerSpot.appendChild(e.target);
    					currentChar.onRaft = true;
    					raftPassenger = currentChar;
-   				}
+   				}*/
    			}
    			// if raft on right, character on right, character on raft
    			else if (!raftOnLeft && !currentChar.onLeft && currentChar.onRaft) {
-   			
-   				// put passenger on right bank
+   				
+   				// put character on right bank
    				document.getElementById(idChar + "Right").appendChild(e.target);
    				currentChar.onRaft = false;
+   				
+   				// if miner removed from aSpot
+   				if (aSpot.innerHTML == "") {
+   					aPassenger = null;
+   				}
+   				
+   				// if a miner removed from bSpot
+   				if (bSpot.innerHTML == "") {
+   					bPassenger = null;
+   				}
+   				
+   				// check if game won
+   				// checkGameWon();
+   			
+   				// put passenger on right bank
+   				/*document.getElementById(idChar + "Right").appendChild(e.target);
+   				currentChar.onRaft = false;
    				raftPassenger = null;
-   				checkGameWon();
+   				checkGameWon();*/
    			}
    		}
   	 }
@@ -346,17 +375,21 @@
    			if (xPos >= cWidth - rWidth - bankDistance) {
    				// reset object values
    				raftOnLeft = false;
-   				farmer.onRaft = true;
-   				farmer.onLeft = false;
-   				if (raftPassenger) {
-   					raftPassenger.onLeft = false;
+   				//farmer.onRaft = true;
+   				//farmer.onLeft = false;
+   				if (aPassenger) {
+   					aPassenger.onLeft = false;
+  				}
+  				
+  				if (bPassenger) {
+  					bPassenger.onLeft = false;
   				}
   				
   				raftMoving = false;
   					
   				// write results to screen
-  				writeSteps();
-  				checkGameLost();
+  				//writeSteps();
+  				//checkGameLost();
   				
   				// increment moves
   				moves++;
@@ -371,16 +404,24 @@
    			if (xPos <= 0) {
    				// reset object values
    				raftOnLeft = true;
-   				farmer.onRaft = true;
-   				farmer.onLeft = true;
-   				if (raftPassenger) {
+   				//farmer.onRaft = true;
+   				//farmer.onLeft = true;
+   				/*if (raftPassenger) {
    					raftPassenger.onLeft = true;
+  				}*/
+  				
+  			    if (aPassenger) {
+   					aPassenger.onLeft = true;
+  				}
+  				
+  				if (bPassenger) {
+  					bPassenger.onLeft = true;
   				}
   					
   				// write results to screen
   				raftMoving = false;
-  				writeSteps();
-  				checkGameLost();
+  				//writeSteps();
+  				//checkGameLost();
   				
   				// increment moves
   				moves++;
