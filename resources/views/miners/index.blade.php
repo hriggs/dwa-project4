@@ -9,7 +9,7 @@
 @stop
 
 @section('content')
-	<h2>The River Crossing Puzzle</h2>
+	<h2>The Endangered Miners</h2>
 	<div id="left">
 		<h3>Directions:</h3>
 		<p class="directions">Four miners have just been trapped in a mine cavern that 
@@ -30,14 +30,10 @@
 		pace of the slowest miner. 
 		<br>
 		<br>
-		Customize your game below. To (re)start the game press the button
-		below!
+		To (re)start the game press the button below!
 		</p>
-		<br>
-		<h3>Customize:</h3>
 		<form>
 			{!! csrf_field() !!}
-			Play as:<br>
 			<input type="radio" name="gender" value="male" checked>Male
 			<br>
 			<input type="radio" name="gender" value="female">Female

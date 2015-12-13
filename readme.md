@@ -32,3 +32,6 @@ Description to go here...
 * <http://pixabay.com/en/sack-rope-full-cartoon-brown-306758/>
 * <http://all-free-download.com/free-vector/download/cabbage_clip_art_13716.html>
 * <http://www.freepik.com/index.php?goto=2&k=people&order=2&vars=8>
+
+### Endangered Miners Puzzle Images
+* Lantern <http://findicons.com/icon/136202/kerosene_lantern?id=136215>

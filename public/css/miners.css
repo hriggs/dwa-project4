@@ -23,7 +23,7 @@
 	height: 500px;
 	float: left;
 	background-color: #38979b;
-	background-image: url("../images/river.png");
+	background-image: url("../images/mine.png");
 }
 
 #right {
@@ -55,14 +55,12 @@ ol {
 }
 
 #raft {
-	background-color: #744c29;
-	background-image: url("../images/raft.png");
+	background-image: url("../images/lantern.png");
 	width: 200px;
 	height: 200px;
 	position: relative; 
 	margin-top: 50px;
 	float: left;
-	box-shadow: 3px 3px 5px #013447;
 }
 
 #farmerInit {
