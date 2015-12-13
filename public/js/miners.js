@@ -28,9 +28,9 @@
 		});
 		  	
 		$.ajax({                    
-			url: '/the-river-crossing-puzzle',     
+			url: '/the-endangered-miners',     
 			type: 'post', // performing a POST request
-			data : {"start_time":start,"end_time":end,"moves":move_num,"title":"The River Crossing Puzzle"},
+			data : {"start_time":start,"end_time":end,"moves":move_num,"title":"The Endangered Miners"},
 			dataType: JSON,                 
 	    });
 	}
@@ -43,22 +43,9 @@
 		this.onLeft = true;
 		this.onRaft = false; 
 	}
-  	
-  	// farmer constructor
-  	/*function Farmer(gender) {
-		this.imgPath = "images/" + ((gender == "female") ? "girlFarmer.png" : "boyFarmer.png");  	
-		this.onLeft = true;
-		this.onRaft = false; 
-  }
-    
-  // passenger character constructor
-  function Character(charName, number, themeNum) {
-  	this.charName = charName.toLowerCase();
-  	this.number = number;
-  	this.imgPath = "images/theme" + themeNum + "/" + charName + ".png";
-  	this.onLeft = true;
-  	this.onRaft = false; 
-  }*/
+  
+  // minutes miners have spent in cave
+  var minerTime = 0; 
   
   // raft initial values
   var raftOnLeft = true; 
@@ -67,12 +54,12 @@
   var raftMoving = false;
   
   // store important objects
-  //var farmer;
   var aChar, bChar, cChar, dChar;
   var aPassenger = null;
   var bPassenger = null;
   
   // text divs
+  var playerMsg = document.getElementById("playerMsg");
   var endText = document.getElementById("endText");
   var stepsArea = document.getElementById("steps");
   
@@ -97,10 +84,11 @@
   	
   	// reset game 
   	gamePlayable = true;
-  	//raftPassenger = null;
   	aPassenger = null;
   	bPassenger = null;
+  	minerTime = 0;
   	xPos = 10;
+  	playerMsg.innerHTML = "Minutes spent in cavern: 0 minutes";
   	endText.innerHTML = "";
   	stepsArea.innerHTML = "";
   	
@@ -246,8 +234,6 @@
    				document.getElementById(idChar + "Left").appendChild(e.target);
    				currentChar.onRaft = false;
    				
-   				console.log(currentChar);
-   				
    				// if miner removed from aSpot
    				if (aSpot.innerHTML == "") {
    					aPassenger = null;
@@ -306,7 +292,7 @@
    				}
    				
    				// check if game won
-   				// checkGameWon();
+   				checkGameWon();
    			
    				// put passenger on right bank
    				/*document.getElementById(idChar + "Right").appendChild(e.target);
@@ -375,8 +361,7 @@
    			if (xPos >= cWidth - rWidth - bankDistance) {
    				// reset object values
    				raftOnLeft = false;
-   				//farmer.onRaft = true;
-   				//farmer.onLeft = false;
+   				
    				if (aPassenger) {
    					aPassenger.onLeft = false;
   				}
@@ -388,8 +373,9 @@
   				raftMoving = false;
   					
   				// write results to screen
+  				writeTime();
   				//writeSteps();
-  				//checkGameLost();
+  				checkGameLost();
   				
   				// increment moves
   				moves++;
@@ -404,11 +390,6 @@
    			if (xPos <= 0) {
    				// reset object values
    				raftOnLeft = true;
-   				//farmer.onRaft = true;
-   				//farmer.onLeft = true;
-   				/*if (raftPassenger) {
-   					raftPassenger.onLeft = true;
-  				}*/
   				
   			    if (aPassenger) {
    					aPassenger.onLeft = true;
@@ -417,11 +398,13 @@
   				if (bPassenger) {
   					bPassenger.onLeft = true;
   				}
+  				
+  				raftMoving = false;
   					
   				// write results to screen
-  				raftMoving = false;
+  				writeTime();
   				//writeSteps();
-  				//checkGameLost();
+  				checkGameLost();
   				
   				// increment moves
   				moves++;
@@ -436,53 +419,88 @@
    
    /**
     * Checks if the condition is met for puzzle to be solved
-    * (all characters on right bank) and writes text to screen if won.  
+    * (all characters on right side in 15 or less minutes), and writes text to screen if won.  
     */
     function checkGameWon() {
-    	if (!farmer.onLeft && !aChar.onLeft && !bChar.onLeft && !cChar.onLeft &&
-    		 !farmer.onRaft && !aChar.onRaft && !bChar.onRaft && !cChar.onRaft) {
-    		// write "win" text to screen and stop player from playing until restarting again
-    		endText.innerHTML = "You solved the puzzle!";
-   			gamePlayable = false;
-   			
-   			// save puzzle end time
-   			end_time = new Date().toJSON();
-   			
-   			// send data via AJAX
-   			sendData(start_time, end_time, moves);
-   		}
+    	
+    	console.log("check game won");
+    	
+    	// if all characters on right side and not on raft
+    	if (!aChar.onLeft && !bChar.onLeft && !cChar.onLeft && !dChar.onLeft &&
+    		!aChar.onRaft && !bChar.onRaft && !cChar.onRaft && !bChar.onRaft) {
+    			
+    			console.log("everyone on right side");
+    			
+    			// if game is not lost
+    			if (minerTime <= 15) {
+    				
+					console.log("miner time less than 15: " + minerTime);    				
+    				
+    				// add background to endText div
+   	   				endText.style.backgroundColor = "#54585C";
+   	   		
+   	   				// print message
+	   				endText.innerHTML = "You solved the puzzle; the miners escaped safely!";
+	   		
+	   				// end game
+   					gamePlayable = false;
+   					
+   					// save puzzle end time
+		   			end_time = new Date().toJSON();
+		   			
+		   			// send data via AJAX
+		   			sendData(start_time, end_time, moves);
+    			}
+    	
+    	}
+    }
+    
+   /**
+    * Write updated time at top of game.
+    */
+    function writeTime() {
+    	
+    	var aTime = 0; 
+    	var bTime = 0;
+    	var slowTime = 0;
+    	
+    	// get first passenger's time
+    	if (aPassenger) {
+    		aTime = aPassenger.minutes;
+    	}
+    	
+    	// get second passenger's time
+    	if (bPassenger) {
+    		bTime = bPassenger.minutes;
+    	}
+    	
+    	// get the slowest time
+    	slowTime = ((aTime >= bTime) ? aTime : bTime); 
+    	
+    	// write time info to screen
+    	playerMsg.innerHTML = "Minutes spent in cavern: " + minerTime + " + " + slowTime + " = " + (minerTime + slowTime) + " minutes";
+    	
+    	// reset miner time 
+    	minerTime += slowTime;
     }
    
    /**
     * Checks if any conditions are met for the game to end because player lost
-    * (an animal eaten) and writes text to screen if lost.
+    * (time ran out), and writes text to screen if lost.
     */
    function checkGameLost() {
    	
-   	// if farmer on left
-   	if (farmer.onLeft) {
-   		// if a & b characters on right
-   		if (!aChar.onLeft && !bChar.onLeft) {
-   			endText.innerHTML = "The " + aChar.charName + " ate the " + bChar.charName + "!";
+	   // if time has run out
+	   if (minerTime > 15) {
+	   		// add background to endText div
+   	   		endText.style.backgroundColor = "#54585C";
+   	   		
+   	   		// print message
+	   		endText.innerHTML ="The miners did not escape in 15 minutes or less; the mine has collapsed!";
+	   		
+	   		// end game
    			gamePlayable = false;
-   		// if b & c characters on right
-   		} else if (!bChar.onLeft && !cChar.onLeft) {
-   			endText.innerHTML = "The " + bChar.charName + " ate the " + cChar.charName + "!";
-   			gamePlayable = false;
-   		}
-   	}
-   	// if farmer on right
-   	else {
-   		// if a & b characters on left
-   		if (aChar.onLeft && bChar.onLeft) {
-   			endText.innerHTML = "The " + aChar.charName + " ate the " + bChar.charName + "!";
-   			gamePlayable = false;
-   		// if b & c characters on left
-   		} else if (bChar.onLeft && cChar.onLeft) {
-   			endText.innerHTML = "The " + bChar.charName + " ate the " + cChar.charName + "!";
-   			gamePlayable = false;
-   		}
-   	}
+	   }
    }
    
    /**

@@ -83,10 +83,11 @@ ol {
 
 #endText {
 	font-weight: bold;
-	font-size: 250%;
+	font-size: 150%;
 	text-align: center;
 	position: relative;
 	height: 100px;
+	color: #FFE7C9;
 }
 
 /* Buttons */
