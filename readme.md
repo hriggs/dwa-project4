@@ -35,3 +35,5 @@ Description to go here...
 
 ### Endangered Miners Puzzle Images
 * Lantern <http://findicons.com/icon/136202/kerosene_lantern?id=136215>
+* Bandage icons <http://www.flaticon.com/free-icons/bandage_24151>
+* Pickaxe and axe <http://www.iconarchive.com/tag/pickaxe>
