@@ -69,7 +69,8 @@
   // store important objects
   //var farmer;
   var aChar, bChar, cChar, dChar;
-  //var raftPassenger;
+  var aPassenger;
+  var bPassenger;
   
   // text divs
   var endText = document.getElementById("endText");
@@ -97,6 +98,8 @@
   	// reset game 
   	gamePlayable = true;
   	//raftPassenger = null;
+  	aPassenger = null;
+  	bPassenger = null;
   	xPos = 10;
   	endText.innerHTML = "";
   	stepsArea.innerHTML = "";
@@ -156,7 +159,7 @@
 		if (gamePlayable && !raftMoving) {
   		
   			// if farmer image clicked
-  			if (e.target == document.getElementById("farmerImg")) {
+  			/*if (e.target == document.getElementById("farmerImg")) {
   			
   				// save farmer's spot on raft
   				var farmerSpot = document.getElementById("farmerSpot");
@@ -183,10 +186,11 @@
   					farmer.onRaft = false;
   					checkGameWon();
   				}
-  			// if one of 3 other characters clicked
-   		} else if (e.target == document.getElementById("aImg") || 
+  			// if miner clicked
+   		} else*/ if (e.target == document.getElementById("aImg") || 
    					  e.target == document.getElementById("bImg") || 
-   					  e.target == document.getElementById("cImg")) {
+   					  e.target == document.getElementById("cImg") ||
+   					  e.target == document.getElementById("dImg")) {
    		
    			// save information about target
    			var currentChar;
@@ -197,31 +201,68 @@
    				currentChar = aChar;
    			} else if (idChar == "b") {
    				currentChar = bChar;
-   			} else {
+   			} else if (idChar == "c") {
    				currentChar = cChar;
+   			} else {
+   				currentChar = dChar;
    			}
+   			
+   			console.log(idChar);
    		
-   			// save passenger spot on raft
-   			var passengerSpot = document.getElementById("passengerSpot");
+   			// access a and b spots on raft
+   			var aSpot = document.getElementById("aSpot");
+   			var bSpot = document.getElementById("bSpot");
    		
 			// if raft on left, character on left, character on bank
    			if (raftOnLeft && currentChar.onLeft && !currentChar.onRaft) { 
+   			
+   				// if no miner on aSpot
+   				if (aSpot.innerHTML == "") {
+   					
+   					// put miner on raft on aSpot
+   					aSpot.appendChild(e.target);
+   					currentChar.onRaft = true;
+   					aPassenger = currentChar;
+   					
+   				// if a miner on aSpot and no miner on bSpot
+   				} else if (bSpot.innerHTML == "") {
+
+   					// put miner on bSpot
+   					bSpot.appendChild(e.target);
+   					currentChar.onRaft = true;
+   					bPassenger = currentChar;
+   				}
    		
    				// if no passenger on raft
-   				if (passengerSpot.innerHTML == "") {
+   				/*if (passengerSpot.innerHTML == "") {
    				
    					// put passenger on raft
    					passengerSpot.appendChild(e.target);
    					currentChar.onRaft = true;
    					raftPassenger = currentChar;
-   				}
+   				}*/
    			// if raft on left, character on left, character on raft
    			} else if (raftOnLeft && currentChar.onLeft && currentChar.onRaft) {
    			
    				// put character on left bank
    				document.getElementById(idChar + "Left").appendChild(e.target);
    				currentChar.onRaft = false;
-   				raftPassenger = null;
+   				
+   				console.log(currentChar);
+   				
+   				// if miner removed from aSpot
+   				if (aSpot.innerHTML == "") {
+   					
+   					console.log("miner removed from a spot");
+   					aPassenger = null;
+   					
+   				// if a miner on aSpot and no miner on bSpot
+   				} else if (bSpot.innerHTML == "") {
+   					
+   					console.log("miner removed from b spot");
+   					bPassenger = null;
+   				}
+   				//raftPassenger = null;
    			}
    			// if raft on right, character on right, character on bank
    			else if (!raftOnLeft && !currentChar.onLeft && !currentChar.onRaft) {
@@ -253,7 +294,7 @@
    */
    document.getElementById("crossBtn").addEventListener("click", function(e) {
    	
-   	// store raft element
+    // store raft element
    	var raft = document.getElementById("raft");
    	
    	// store widths
@@ -269,8 +310,8 @@
 			dx = -dx; 
 		}   	
    	
-   	// raft can only move if game playable, farmer on raft and raft not moving already
-   	if (gamePlayable && farmer.onRaft && !raftMoving) {
+   	// raft can only move if game playable, raft not moving already, and at least one passenger on raft
+   	if (gamePlayable && !raftMoving && (aPassenger != null || bPassenger != null)) {
    		move();
    	}
    	

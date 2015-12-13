@@ -63,17 +63,12 @@ ol {
 	float: left;
 }
 
-#farmerInit {
-	width: 100px; 
-	height: 100px;
-}
-
-.character, #farmerSpot, #passengerSpot {
+.character, #aSpot, #bSpot {
 	width: 100px;
 	height: 100px;
 }
 
-#farmerSpot, #passengerSpot {
+#aSpot, #bSpot {
 	margin-left: auto;
 	margin-right: auto;
 }
