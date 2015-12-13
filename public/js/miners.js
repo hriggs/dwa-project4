@@ -34,9 +34,18 @@
 			dataType: JSON,                 
 	    });
 	}
+	
+	// miner constructor
+	function Miner(charName, minutes) {
+		this.charName = charName;
+		this.minutes = minutes;
+		this.imgPath = "images/miners/" + charName.toLowerCase() + ".png";
+		this.onLeft = true;
+		this.onRaft = false; 
+	}
   	
   	// farmer constructor
-  	function Farmer(gender) {
+  	/*function Farmer(gender) {
 		this.imgPath = "images/" + ((gender == "female") ? "girlFarmer.png" : "boyFarmer.png");  	
 		this.onLeft = true;
 		this.onRaft = false; 
@@ -49,7 +58,7 @@
   	this.imgPath = "images/theme" + themeNum + "/" + charName + ".png";
   	this.onLeft = true;
   	this.onRaft = false; 
-  }
+  }*/
   
   // raft initial values
   var raftOnLeft = true; 
@@ -58,9 +67,9 @@
   var raftMoving = false;
   
   // store important objects
-  var farmer;
-  var aChar, bChar, cChar;
-  var raftPassenger;
+  //var farmer;
+  var aChar, bChar, cChar, dChar;
+  //var raftPassenger;
   
   // text divs
   var endText = document.getElementById("endText");
@@ -87,7 +96,7 @@
   	
   	// reset game 
   	gamePlayable = true;
-  	raftPassenger = null;
+  	//raftPassenger = null;
   	xPos = 10;
   	endText.innerHTML = "";
   	stepsArea.innerHTML = "";
@@ -96,37 +105,46 @@
   	document.getElementById("raft").style.left = 0;
   	raftOnLeft = true;
   	
+  	// create miner objects
+  	aChar = new Miner("Onika", 1);
+  	bChar = new Miner("Twitch", 2);
+  	cChar = new Miner("Fiona", 4);
+  	dChar = new Miner("Edward", 8);
+  	
   	// create farmer object
-  	farmer = new Farmer(document.querySelector('input[name="gender"]:checked').value);
+  	//farmer = new Farmer(document.querySelector('input[name="gender"]:checked').value);
   	
   	// draw farmer on left bank
-  	document.getElementById("farmerLeft").appendChild(document.getElementById("farmerImg"));
-  	farmerImg.src = farmer.imgPath;
+  	//document.getElementById("farmerLeft").appendChild(document.getElementById("farmerImg"));
+  	//farmerImg.src = farmer.imgPath;
   	
 	// store chosen theme details
-  	var select = document.getElementById("select");
+  	/*var select = document.getElementById("select");
   	var themeNum = select.selectedIndex;
   	var theme = select.options[select.selectedIndex].value.split("/");
   	
   	// create character objects
   	aChar = new Character(theme[0], 1, themeNum); 
   	bChar = new Character(theme[1], 2, themeNum); 
-  	cChar = new Character(theme[2], 3, themeNum); 
+  	cChar = new Character(theme[2], 3, themeNum);*/ 
   	
   	// store image elements
   	var aImg = document.getElementById("aImg");
   	var bImg = document.getElementById("bImg");
   	var cImg = document.getElementById("cImg");
+  	var dImg = document.getElementById("dImg");
   	
   	// put character image elements on left bank
   	document.getElementById("aLeft").appendChild(aImg);
   	document.getElementById("bLeft").appendChild(bImg);
   	document.getElementById("cLeft").appendChild(cImg);
+  	document.getElementById("dLeft").appendChild(dImg);
   	
 	// set image sources, so images visible
 	aImg.src = aChar.imgPath;
 	bImg.src = bChar.imgPath;
 	cImg.src = cChar.imgPath;
+	dImg.src = dChar.imgPath;
   });
 	  
   /**

@@ -34,18 +34,6 @@
 		</p>
 		<form>
 			{!! csrf_field() !!}
-			<input type="radio" name="gender" value="male" checked>Male
-			<br>
-			<input type="radio" name="gender" value="female">Female
-			<br>
-			Theme:<br>
-			<select id="select">
-				<option>Fox/Chicken/Grain</option>
-				<option>Panther/Pig/Porridge</option>
-				<option>Wolf/Sheep/Cabbage</option>
-				<option>Fox/Goose/Beans</option>
-			</select>
-			<br>
 			<button id="startBtn" type="button">Restart</button>
 		</form>
 	</div>
@@ -54,9 +42,6 @@
 			<div id="canvas">
 				<div id="endText"></div>
 				<div id="charsInit">
-					<div class="character" id="farmerLeft">
-						<img src="" alt="" id="farmerImg">
-					</div>
 					<div class="character" id="aLeft">
 						<img src="" alt="" id="aImg">
 					</div>
@@ -66,19 +51,22 @@
 					<div class="character" id="cLeft">
 						<img src="" alt="" id="cImg">
 					</div>
+					<div class="character" id="dLeft">
+						<img src="" alt="" id="dImg">
+					</div>
 				</div>
 				<div id="raft">
-					<div id="farmerSpot"></div>
-					<div id="passengerSpot"></div>
+					<div id="aSpot"></div>
+					<div id="bSpot"></div>
 				</div>
 				<div id="rightBank">
-					<div class="character" id="farmerRight">
-					</div>
 					<div class="character" id="aRight">
 					</div>
 					<div class="character" id="bRight">
 					</div>
 					<div class="character" id="cRight">
+					</div>
+					<div class="character" id="dRight">
 					</div>
 				</div>
 				<div class="clearFix"></div>
