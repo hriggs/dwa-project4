@@ -423,18 +423,12 @@
     */
     function checkGameWon() {
     	
-    	console.log("check game won");
-    	
     	// if all characters on right side and not on raft
     	if (!aChar.onLeft && !bChar.onLeft && !cChar.onLeft && !dChar.onLeft &&
     		!aChar.onRaft && !bChar.onRaft && !cChar.onRaft && !bChar.onRaft) {
     			
-    			console.log("everyone on right side");
-    			
     			// if game is not lost
-    			if (minerTime <= 15) {
-    				
-					console.log("miner time less than 15: " + minerTime);    				
+    			if (minerTime <= 15) {    				
     				
     				// add background to endText div
    	   				endText.style.backgroundColor = "#54585C";
@@ -451,7 +445,6 @@
 		   			// send data via AJAX
 		   			sendData(start_time, end_time, moves);
     			}
-    	
     	}
     }
     
