@@ -88,8 +88,10 @@
   	bPassenger = null;
   	minerTime = 0;
   	xPos = 10;
+  	document.getElementById("canvas").style.backgroundImage = "url(../images/mine.png)";
   	playerMsg.innerHTML = "Minutes spent in cavern: 0 minutes";
   	endText.innerHTML = "";
+  	endText.style.backgroundColor = "rgba(0, 0, 0, 0)";
   	stepsArea.innerHTML = "";
   	
   	// reset raft 
@@ -414,11 +416,15 @@
    	
 	   // if time has run out
 	   if (minerTime > 15) {
+			
+			// change background image
+			document.getElementById("canvas").style.backgroundImage = "url(../images/mine-collapsed.png)";
+	   	
 	   		// add background to endText div
    	   		endText.style.backgroundColor = "#54585C";
    	   		
    	   		// print message
-	   		endText.innerHTML ="The miners did not escape in 15 minutes or less; the mine has collapsed!";
+	   		endText.innerHTML = "The miners did not escape in 15 minutes or less; the mine has collapsed!";
 	   		
 	   		// end game
    			gamePlayable = false;
