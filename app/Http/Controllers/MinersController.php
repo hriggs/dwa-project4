@@ -23,6 +23,8 @@ class MinersController extends Controller {
     
    /**
     * Responds to requests to POST /the-river-crossing-puzzle
+    *
+    * @param $request request object
     */
     public function postIndex(Request $request) {
     	

@@ -26,6 +26,8 @@ class ProfileController extends Controller {
     
    /**
     * Responds to requests to POST /profile
+    *
+    * @param $request request object
     */
     public function postIndex(Request $request) {
     	

@@ -14,6 +14,8 @@ class HighScoresController extends Controller {
     
    /**
     * Responds to requests to GET /high-scores
+    *
+    * @param $request request object
     */
     public function getIndex(Request $request) {
     	
@@ -39,6 +41,8 @@ class HighScoresController extends Controller {
     
    /**
     * Responds to requests to POST /high-scores
+    *
+    * @param $request request object
     */
     public function postIndex(Request $request) {
     	

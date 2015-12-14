@@ -16,6 +16,8 @@ class StatsController extends Controller {
     
    /**
     * Responds to requests to GET /stats
+    *
+    * @param $request request object
     */
     public function getIndex(Request $request) {
     	
@@ -48,6 +50,8 @@ class StatsController extends Controller {
     
    /**
     * Responds to requests to POST /stats
+    *
+    * @param $request request object
     */
     public function postIndex(Request $request) {
     	
@@ -143,6 +147,8 @@ class StatsController extends Controller {
     
    /**
     * Return array of puzzle titles
+    *
+    * @param $puzzles collection of puzzles
     */
     public function returnTitles($puzzles) {
     	

@@ -23,6 +23,8 @@ class ChangePasswordController extends Controller {
     
    /**
     * Responds to requests to POST /change-password
+    *
+    * @param $request request object
     */
     public function postIndex(Request $request) {
     	
