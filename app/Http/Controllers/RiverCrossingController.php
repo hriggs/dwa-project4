@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Auth;
 
 class RiverCrossingController extends Controller {
 	
@@ -24,6 +25,11 @@ class RiverCrossingController extends Controller {
     * Responds to requests to POST /the-river-crossing-puzzle
     */
     public function postIndex(Request $request) {
+    	
+    	// if user not logged in, do not store data
+    	if (!Auth::check()) {
+    		return;
+    	}
  		
  		// array to save data in
  		$data = [];
@@ -69,8 +75,5 @@ class RiverCrossingController extends Controller {
     	// save data in gamesession_user
     	$user = array(\Auth::id());
     	$gamesession->users()->sync($user);
-    	
-    	// actually return same view or return nothing?
-        return " POST!";
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Auth;
 
 class MinersController extends Controller {
 	
@@ -25,7 +26,10 @@ class MinersController extends Controller {
     */
     public function postIndex(Request $request) {
     	
-    	return "Miners POST!";
+    	// if user not logged in, do not store data
+    	if (!Auth::check()) {
+    		return;
+    	}
  		
  		// array to save data in
  		$data = [];
@@ -50,7 +54,7 @@ class MinersController extends Controller {
 		$total_time = round($difference / 60, 2);
 		
 		// get puzzle id
-		$puzzle = \App\Puzzle::where("title", "=", "The River Crossing Puzzle")->first();
+		$puzzle = \App\Puzzle::where("title", "=", "The Endangered Miners")->first();
 		$puzzle_id = $puzzle["id"];
 
 		// get and set last attempt for this puzzle
@@ -71,8 +75,5 @@ class MinersController extends Controller {
     	// save data in gamesession_user
     	$user = array(\Auth::id());
     	$gamesession->users()->sync($user);
-    	
-    	// actually return same view or return nothing?
-        return " POST!";
     }
 }
