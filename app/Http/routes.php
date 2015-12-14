@@ -26,7 +26,7 @@ Route::get('/register', 'Auth\AuthController@getRegister');
 // Process registration form
 Route::post('/register', 'Auth\AuthController@postRegister');
 
-// Pages guests and users can see
+// Pages guests and logged-in users can see
 Route::controller("/puzzles", "PuzzlesController");
 Route::controller("/profile", "ProfileController");
 Route::controller("/stats", "StatsController");
