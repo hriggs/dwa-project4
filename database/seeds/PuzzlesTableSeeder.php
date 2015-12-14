@@ -96,7 +96,7 @@ class PuzzlesTableSeeder extends Seeder
         					miners only have one working lantern. In addition,
 							only two miners can traverse the tunnel at a time with the lantern.
 							Onika is uninjured and can walk the tunnel in one minute; Twitch 
-							has a limp, but can walk the tunnel in two minutes; Fiona has a 
+							has hit his head and is disoriented, but can walk the tunnel in two minutes; Fiona has a 
 							broken foot, but can manage to get through in four minutes; 
 							while Edward is more seriously injured and can only get
 							through in eight minutes. How can they escape in time?',
