@@ -40,7 +40,7 @@
 			@foreach($gamesessions as $session)
 		    	<tr>
 		    		<td>{{ ++$ranking }}</td>
-		    		<td>{{ $usernames[$ranking] }}</td>
+		    		<td class="page-link"><a href="/users/{{ $usernames[$ranking] }}">{{ $usernames[$ranking] }}</a></td>
 		    		<td>{{ $session->puzzle->title }}</td>
 			    		@if ( $headers[0] == "Time")
 	    					<td>{{ $session->total_time }}</td>

@@ -32,6 +32,7 @@ Route::controller("/profile", "ProfileController");
 Route::controller("/stats", "StatsController");
 Route::controller("/change-password", "ChangePasswordController");
 Route::controller("/high-scores", "HighScoresController");
+Route::controller("/users/{username?}", "UsersController");
 Route::controller("/the-river-crossing-puzzle", "RiverCrossingController");
 Route::controller("/the-endangered-miners", "MinersController");
 Route::controller("/", "IndexController");
