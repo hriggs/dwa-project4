@@ -62,7 +62,7 @@ class GamesessionsTableSeeder extends Seeder
     		for ($j = 1; $j < $sessions; $j++) {
     			
     			// generate random number of moves puzzle took
-				$moves = rand(7, 30);  
+				$moves = rand(5, 30);  
 				
 				// generate random time
 				$time = rand(1, 20);
