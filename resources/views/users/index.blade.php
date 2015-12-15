@@ -7,6 +7,7 @@
 @section('content')
 	@if(isset($user)) 
 		<h2>View PuzzleLit User: {{ $user->username }}</h2>
+		<p><span class="header">Name:</span><br>{{ $user->name }}</p>
 		<p><span class="header">City:</span><br>{{ $user->city }}</p>
 		<p><span class="header">State:</span><br>{{ $user->state }}</p>
 		<p><span class="header">Country:</span><br>{{ $user->country }}</p>
