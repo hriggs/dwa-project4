@@ -13,6 +13,8 @@ class UsersController extends Controller {
     
     /**
     * Responds to requests to GET /users/{$username}
+    * 
+    * @param $username user's username, allowed to be null
     */
     public function getIndex($username = null) {
     	
