@@ -11,7 +11,9 @@ stats will not be stored. Logged in users have the ability to update their profi
 information, and also sort their stats. For example, they can sort by attempt number, 
 number of moves, or by total time spent on a puzzle. They can also delete their stats 
 for any puzzle. Users can also see the top scores of each puzzle sorted by either 
-fastest time or fewest number of moves. Finally, there is a list of all puzzles which 
+fastest time or fewest number of moves. Users can also click on the username of a user 
+on the high scores page which will lead the user to a page which shows the high scorer's 
+public profile information. Finally, there is a list of all puzzles which 
 includes details such as a description, picture, and directions for each puzzle. Not 
 yet built puzzles are also listed on this page under a "Coming Soon!" heading. 
 
