@@ -310,3 +310,8 @@ p .header {
 	margin: 0 40% 1em 40%;
 	font-size: 130%;
 }
+
+/* Other */
+.bold {
+	font-weight: bold;
+}

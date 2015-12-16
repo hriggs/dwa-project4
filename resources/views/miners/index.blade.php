@@ -25,16 +25,17 @@
 		</div>
 		<p class="directions">
 		One to two miners can traverse the tunnel at once. 
+		<span class="bold">Click a miner to move them in/out of the tunnel.</span>
 		Click the "Traverse Tunnel" button to move the miners. 
 		When two miners traverse at once, they will move at the 
 		pace of the slowest miner. 
 		<br>
 		<br>
-		To (re)start the game press the button below!
+		To start the game press the button below!
 		</p>
 		<form>
 			{!! csrf_field() !!}
-			<button id="startBtn" type="button">Restart</button>
+			<button id="startBtn" type="button">Start</button>
 		</form>
 	</div>
 	<div id="center" class="extraSpace">

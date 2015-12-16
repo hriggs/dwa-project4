@@ -18,13 +18,13 @@
 		left alone with the last.
 		<br>
 		<br>
-		The farmer may only take one item across at a time. Click an item to move it onto/off the raft.
+		The farmer may only take one item across at a time. 
+		<span class="bold">Click a character/item to move it onto/off the raft.</span>
 		Click on the "Cross River" button to send raft across the river.
 		To win, all four characters must be on the right bank.
 		<br>
 		<br>
-		Customize your game below. To (re)start the game press the button
-		below!
+		To start the game press the button below!
 		</p>
 		<br>
 		<h3>Customize:</h3>
@@ -43,7 +43,7 @@
 				<option>Fox/Goose/Beans</option>
 			</select>
 			<br>
-			<button id="startBtn" type="button">Restart</button>
+			<button id="startBtn" type="button">Start</button>
 		</form>
 	</div>
 	<div id="center" class="extraSpace">
