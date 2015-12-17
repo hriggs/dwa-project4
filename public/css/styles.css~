@@ -317,7 +317,91 @@ p .header {
 }
 
 /* Responsive Styles */
+
+@media (max-width: 1200px) {
+	
+	.small select {
+		width: 100%;
+		font-size: 100%;
+	}
+	
+	.small {
+		width: 30%;
+	}
+	
+	.middle {
+		font-size: 80%;
+		width: 30%;
+	}
+	
+	.middle p {
+		text-align: left;
+	}
+}
+
+@media (max-width: 1000px) {
+	
+	h1 {
+		color: yellow;
+	}
+	
+	.small select {
+		width: 100%;
+		font-size: 70%;
+	}
+}
+
+@media (max-width: 775px) {
+	
+	h1 {
+		color: red;
+	}
+	
+	.small, .middle {
+		float: none;
+		width: 80%;
+		margin: 2em 10%;
+		padding: 0;
+	}
+	
+	.middle {
+		border: 0px solid white;	
+	}
+	
+	.small select {
+		width: 75%;
+		font-size: 80%;
+	}
+}
+
+@media (max-width: 660px) {
+	
+	.stats th, .stats td {
+		padding: 5px;
+		font-size: 80%;
+	}
+}
+
 @media (max-width: 580px) {
+	
+	.small, .middle {
+		width: 100%;
+		margin: 2em 0;
+		padding: 0;
+	}
+	
+	th, td {
+		padding: 5px;
+		font-size: 80%;
+	}
+}
+
+@media (max-width: 500px) {
+	
+	.stats th, .stats td {
+		padding: 2px;
+		font-size: 80%;
+	}
 	
 	th, td {
 		padding: 5px;
@@ -326,6 +410,10 @@ p .header {
 }
 
 @media (max-width: 450px) {
+
+	.sort {
+		padding: 20px;
+	}
 	
 	.btn-puzzle {
 		padding: 0.5em;
@@ -336,13 +424,18 @@ p .header {
 		text-align: left;
 		font-size: 130%;
 	}
+	
+	.stats th, .stats td {
+		padding: 0px;
+		font-size: 70%;
+	}
 }
 
 @media (max-width: 420px) {
 	
 	th, td {
 		padding: 5px;
-		font-size: 60%;
+		font-size: 55%;
 	}
 	
 	.sort, .join {
@@ -359,8 +452,26 @@ p .header {
 	}
 }
 
-@media (max-width: 350px) {
+@media (max-width: 375px) {
 	
+	.small h3, .middle h3 {
+	font-size: 120%;
+	font-weight: bold;
+	}
+	
+	.small select, .middle select {
+		font-size: 75%;
+		width: 100%;
+	}
+	
+	.stats th, .stats td {
+		padding: 0px;
+		font-size: 55%;
+	}
+}
+
+@media (max-width: 350px) {
+
 	th, td {
 		padding: 0px;
 	}

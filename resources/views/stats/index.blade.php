@@ -58,7 +58,7 @@
 	</div>
 	
 	@if(isset($stats) && count($stats) > 0)
-		<table>
+		<table class="stats">
 			<tr>
 			    <th>Puzzle</th>
 	    		<th>Attempt Number</th>		
