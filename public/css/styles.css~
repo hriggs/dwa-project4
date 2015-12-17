@@ -313,5 +313,55 @@ p .header {
 
 /* Other */
 .bold {
+	font-weight: bold;
+}
 
+/* Responsive Styles */
+@media (max-width: 580px) {
+	
+	th, td {
+		padding: 5px;
+		font-size: 80%;
+	}
+}
+
+@media (max-width: 450px) {
+	
+	.btn-puzzle {
+		padding: 0.5em;
+		font-size: 75%;
+	}
+	
+	p {
+		text-align: left;
+		font-size: 130%;
+	}
+}
+
+@media (max-width: 420px) {
+	
+	th, td {
+		padding: 5px;
+		font-size: 60%;
+	}
+	
+	.sort, .join {
+		padding: 20px;
+	}
+	
+	select {
+		width: 100%;
+		font-size: 65%;
+	}
+	
+	input, textarea {
+		width: 100%;
+	}
+}
+
+@media (max-width: 350px) {
+	
+	th, td {
+		padding: 0px;
+	}
 }
