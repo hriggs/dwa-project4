@@ -18,8 +18,7 @@ includes details such as a description, picture, and directions for each puzzle.
 yet built puzzles are also listed on this page under a "Coming Soon!" heading. 
 
 ## Demo
-<https://TBD.com>
-* Again, so sorry for the white noise in the background of the demo! 
+<https://youtu.be/-tSvhZayDxg>
 
 ## Details for Teaching Team
 ### Database tables in addition to users table and built in Laravel tables
