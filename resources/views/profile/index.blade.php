@@ -7,12 +7,11 @@
 @section('content')
 	<h2>Welcome {{ $user->name }}!</h2>
 	<p>*Required</p>
-	<p>Leave both password fields blank if you wish to keep your previous password.<br>Password not shown for security reasons.</p>
 	<form method="POST" action="/profile" class="join">
 		{!! csrf_field() !!}
 		<fieldset>
 			<label>Username:*</label><br>
-			<p><span class="form-details">Must be less than 20 characters</span></p>
+			<p><span class="form-details">Must be less than 20 characters and may not contain spaces</span></p>
 			<input type="text" name="username" class="form-box" value='{{$user->username}}' maxlength="20" required>
 		</fieldset>
 		@if($errors->get('username'))
