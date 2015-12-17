@@ -39,8 +39,8 @@ class ProfileController extends Controller {
     		["username" => array('required', 'max:20', 'regex:/^[\S]*$/', 'unique:users,username,'.$user->id),
     		 "name" => "required|max:255",
     		 "email" => "required|email|max:255|unique:users,email,".$user->id,
-    		 "city" => "alpha|max:255",
-    		 "country" => "alpha|max:255"
+    		 "city" => "max:255",
+    		 "country" => "max:255"
     		]);
     	
     	// update fields
