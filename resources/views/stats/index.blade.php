@@ -51,7 +51,7 @@
 						@endforeach
 					</select>
 			</fieldset>
-			<input type="submit" name="delete" class="btn submit" value="Delete All Stats">
+			<input type="submit" name="delete" class="btn submit" value="Delete Stats">
 		</form>
 	</div>
 	<div class="clearfix"></div>
