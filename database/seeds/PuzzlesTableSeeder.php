@@ -86,9 +86,9 @@ class PuzzlesTableSeeder extends Seeder
         	'creator' => 'Richard Hovasse',
         	'creation_date' => 1981,
         	'description' => 'Four miners have just been trapped in a mine cavern 
-        					 that is about to collapse. In fact, it will collapse in
-							 exactly 15 minutes. There is an open, but dark, dangerous, 
-							 and narrow side tunnel leading to safety. Can you help the 
+        					 that is about to collapse in exactly 15 minutes! 
+        					 There is an open, but dark, dangerous, 
+							 and narrow tunnel leading to safety. Can you help the 
 							 miners get out safely? This puzzle is a type of bridge and 
 							 torch problem. Other names include The Midnight Train and 
 							 Dangerous Crossing.',
@@ -96,10 +96,13 @@ class PuzzlesTableSeeder extends Seeder
         					miners only have one working lantern. In addition,
 							only two miners can traverse the tunnel at a time with the lantern.
 							Onika is uninjured and can walk the tunnel in one minute; Twitch 
-							has hit his head and is disoriented, but can walk the tunnel in two minutes; Fiona has a 
+							has hit his head and is disoriented, but can walk the tunnel in two 
+							minutes; Fiona has a 
 							broken foot, but can manage to get through in four minutes; 
 							while Edward is more seriously injured and can only get
-							through in eight minutes. How can they escape in time?',
+							through in eight minutes. Click a miner to move them in/out of the 
+							tunnel. To win, all four characters must be on the right side and 
+							out of the mine shaft.',
         	'image_path' => '/images/miners.jpeg',
         	'created' => true,
     	]);
