@@ -5,10 +5,10 @@
 
 ## Description
 PuzzleLit is a site where users can solve logic puzzles. If they register 
-and log in their stats (time started, time ended, total time spent, total moves, 
+and log in, their puzzle stats (time started, time ended, total time spent, total moves, 
 and attempt number) will be recorded. Otherwise, they can play anonymously and their 
-stats will not be stored. Logged in users have the ability to update their profile 
-information, and also sort their stats. For example, they can sort by attempt number, 
+stats will not be stored. Logged in users have the ability to view and update their profile 
+information, and also view and sort their stats. For example, they can sort by attempt number, 
 number of moves, or by total time spent on a puzzle. They can also delete their stats 
 for any puzzle. Users can also see the top scores of each puzzle sorted by either 
 fastest time or fewest number of moves. Users can also click on the username of a user 
@@ -22,14 +22,14 @@ yet built puzzles are also listed on this page under a "Coming Soon!" heading.
 * Again, so sorry for the white noise in the background of the demo! 
 
 ## Details for Teaching Team
-### Database Tables in Addition to Users Table
+### Database tables in addition to users table and built in Laravel tables
 * puzzles
 * gamesessions
 * gamesession_user
 
 ### CRUD Operations
 * Create: gamesessions and gamesession_user data created when puzzle is solved by logged in user
-* Read: data from puzzles, gamesessions, and user all read and displayed (and sorted) on screen
+* Read: data from puzzles, gamesessions, and users all read and displayed (and sorted) on screen
 * Update: user profile data can be updated on user profile and change password pages
 * Delete: gamesessions and gamesession_user data can be deleted from user's stats page
 
@@ -37,6 +37,7 @@ yet built puzzles are also listed on this page under a "Coming Soon!" heading.
 * All pages with forms use server-side validation (and HTML validation when possible too)
 * JavaScript used for logic puzzles, but PHP used for everything else (all in Laravel)
 * All backgrounds, textures, puzzle piece images, and puzzle images created and/or editted using GIMP image editting software
+* All pages (except for River Crossing and Endangered Miners Puzzle pages-- they require fixed widths) are responsive
 
 ## Outside Code
 ### Packages

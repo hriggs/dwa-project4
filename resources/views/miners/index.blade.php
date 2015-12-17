@@ -28,7 +28,8 @@
 		<span class="bold">Click a miner to move them in/out of the tunnel.</span>
 		Click the "Traverse Tunnel" button to move the miners. 
 		When two miners traverse at once, they will move at the 
-		pace of the slowest miner. 
+		pace of the slowest miner. <span class="bold">To win, all four characters must be on 
+		the right side and out of the mine shaft.</span>
 		<br>
 		<br>
 		To start the game press the button below!
