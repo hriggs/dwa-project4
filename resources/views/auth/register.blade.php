@@ -100,7 +100,7 @@
 		@endif
 		<fieldset>
 			<label>Bio:</label><br>
-			<textarea name="bio" value='{{ old('bio') }}'>{{ old('bio') }}</textarea><br>
+			<textarea name="bio">{{ old('bio') }}</textarea><br>
 		</fieldset>
 		<input type="submit" name="join" class="btn submit" value="Join">
 	</form>
