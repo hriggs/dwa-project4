@@ -45,7 +45,7 @@
 				<div id="endText"></div>
 				<div id="charsInit">
 					<div class="character" id="aLeft">
-						<img src=" " alt="" id="aImg">
+						<img src="" alt="" id="aImg">
 					</div>
 					<div class="character" id="bLeft">
 						<img src="" alt="" id="bImg">
