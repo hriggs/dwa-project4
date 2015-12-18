@@ -14,7 +14,9 @@
 		<h3>Directions:</h3>
 		<p class="directions">Four miners have just been trapped in a mine cavern that 
 		will collapse in exactly 15 minutes! The tunnel leading to safety requires 
-		a lantern to traverse safely. The miners can traverse in the following times:</p>
+		a lantern to traverse safely. <span class="bold">The amount of minutes that a miner 
+		can traverse the mine in is marked on the miner's shirt.</span> 
+		The miners can traverse in the following times:</p>
 		<div class="directions"> 
 			<ol>
 				<li>Onika - 1 minute</li>
